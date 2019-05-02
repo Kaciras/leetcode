@@ -36,13 +36,13 @@ async def get_questions_online():
 
 	async with aiohttp.ClientSession() as session:
 		async with session.get('https://leetcode-cn.com/api/problems/all/') as resp:
-			data = await resp.json(content_type="text/html")
-
 			questions = {}
-			print(f"download from leetcode-cn, total questions：{data['num_total']}")
+			data = await resp.json(content_type="text/html")
+			print("从LeetCode中文站下载问题列表，总计：" + str(data['num_total']))
 
 			for pair in data['stat_status_pairs']:
 				questions[pair["stat"]["question_id"]] = extract(pair)
+
 			return questions
 
 
@@ -100,13 +100,20 @@ async def check():
 
 
 async def rename_mode():
+	"""重命名功能，自动查找问题的难度和名字，将临时文件 0.py 改名并移动到合适的目录"""
 	if not os.path.exists("0.py"):
 		return print('unnamed file should be named "0.py"')
-	print("please enter question id：", end="")
+
+	print("输入问题的ID：", end="")
 	id_ = input()
 
-	question = (await get_questions())[id_]
-	new_path = f"{level_names[question['level']]}/Q{id_}_{question['name']}.py"
+	questions = await get_questions()
+	if id_ not in questions:
+		return print(colorama.Fore.LIGHTRED_EX + "在题库中找不到指定ID的问题")
+
+	lv, name = questions[id_]['level'], questions[id_]['name']
+	new_path = f"{level_names[lv]}/Q{id_}_{name}.py"
+
 	os.rename("0.py", new_path)
 	print("rename 0.py to：" + new_path)
 
@@ -118,11 +125,10 @@ async def statistic_mode():
 	print(f"题目数量({len(total)})：Easy - {len(easy)}，Medium - {len(medium)}，Hard - {len(hard)}")
 
 
-# asyncio.get_event_loop().set_debug(True)
-
 if __name__ == '__main__':
 	queue = list(reversed(sys.argv[1:]))
 	cmd = queue.pop()
+	# asyncio.get_event_loop().set_debug(True)
 
 	if cmd == "-R":  # 改名模式
 		asyncio.get_event_loop().run_until_complete(rename_mode())

@@ -1,4 +1,4 @@
-from utils import linked_list, ListNode, print_linked_list
+from utils import linked_list, ListNode
 
 class Solution:
 
@@ -21,6 +21,7 @@ class Solution:
 			node.next = l1
 		if l2:
 			node.next = l2
+
 		return prev_head.next
 
 	def mergeTwoLists2(self, l1, l2):
