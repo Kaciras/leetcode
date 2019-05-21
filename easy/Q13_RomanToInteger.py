@@ -48,7 +48,7 @@ M             1000
 输出: 1994
 解释: M = 1000, CM = 900, XC = 90, IV = 4.
 """
-import timeit
+from utils import benckmark
 
 
 class Solution:
@@ -66,7 +66,8 @@ class Solution:
 		for n in reversed(s):
 			c = table[n]
 			if c >= last:
-				result, last = result + c, c
+				result += c
+				last = c
 			else:
 				result -= c
 
@@ -94,5 +95,4 @@ if __name__ == '__main__':
 	print(Solution().romanToInt("IX"))  # 9
 	print(Solution().romanToInt("MCMXCIV"))  # 1994
 
-	solution = Solution()
-	print(timeit.repeat("solution.romanToInt('MCMXCIV')", globals=globals()))
+	benckmark(Solution().romanToInt, "MCMXCIV")

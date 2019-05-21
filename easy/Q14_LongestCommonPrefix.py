@@ -1,15 +1,14 @@
+from typing import List
+
+
 class Solution:
 	"""
-	min() 函数中key的使用
+	min() 函数中 key 的使用
 	enumerate() 用来同时遍历索引和元素
 	"""
 
-	def longestCommonPrefix(self, strs):
-		"""
-		:type strs: List[str]
-		:rtype: str
-		"""
-		if len(strs) == 0:
+	def longestCommonPrefix(self, strs: List[str]) -> str:
+		if not strs:
 			return ""
 		shortest = min(strs, key=len)
 		for i, ch in enumerate(shortest):
