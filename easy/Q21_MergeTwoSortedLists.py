@@ -1,4 +1,6 @@
-from utils import linked_list, ListNode
+from utils import benckmark
+from utils import linked_list, ListNode, linked_list_factory
+
 
 class Solution:
 
@@ -24,25 +26,11 @@ class Solution:
 
 		return prev_head.next
 
-	def mergeTwoLists2(self, l1, l2):
-		"""
-		:type l1: ListNode
-		:type l2: ListNode
-		:rtype: ListNode
-		"""
-		node, n0, n1 = ListNode(None), l1, l2
-		prev_head = node
-
-		while n0 or n1:
-			if not n0 or (n1 and n0.val > n1.val):
-				node.next, n1 = n1, n1.next
-			else:
-				node.next, n0 = n0, n0.next
-			node = node.next
-
-		return prev_head.next
-
 
 if __name__ == '__main__':
 	print(Solution().mergeTwoLists(linked_list([1, 2, 4]), linked_list([1, 3, 4])))
 	print(Solution().mergeTwoLists(linked_list([1]), linked_list([])))
+
+	a = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 29, 31, 37, 41]
+	b = [0, 2, 8, 12, 13, 14, 15, 16, 20, 21, 22, 30, 35, 39, 42, 45, 50, 51, 100, 200, 300, 400, 1000, 1024, 2048]
+	benckmark(Solution().mergeTwoLists, linked_list_factory(a), linked_list_factory(b), number=100000)

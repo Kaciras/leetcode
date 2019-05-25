@@ -11,7 +11,7 @@ class Solution:
 
 	def twoSum(self, nums: List[int], target: int) -> List[int]:
 		"""
-		直接 key in dict 而不是 key in dict.keys()，耗时降低了 0.1 秒/百万次
+		直接 key in dict 而不是 key in dict.keys()，耗时降低了 0.3 秒/百万次
 		使用 enumerate(nums) 代替 range(len(nums)))，耗时降低了 0.07 秒/百万次
 		visited = dict() 比 visited = {} 写法竟然慢了 0.1 秒/百万次
 		"""
@@ -24,5 +24,5 @@ class Solution:
 
 
 if __name__ == '__main__':
-	print(Solution().twoSum([2, 1, -8, 7, 11, 15], 9))
+	assert Solution().twoSum([2, 1, -8, 7, 11, 15], 9) == [0, 3]
 	benckmark(Solution().twoSum, [2, 1, -8, 7, 11, 15], 9)
