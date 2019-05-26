@@ -27,8 +27,10 @@ async def get_questions():
 		ts = (last_update -  datetime.fromtimestamp(0)).total_seconds()
 
 		if os.stat(CACHE_FILE).st_mtime > ts:
+			print("使用缓存的题库")
 			return json.load(open(CACHE_FILE, "r"))
 
+	print("从LeetCode下载题库")
 	questions = await get_questions_online()
 	json.dump(questions, open(CACHE_FILE, "w"))
 	return questions
@@ -113,7 +115,7 @@ async def rename_mode():
 	if not os.path.exists("0.py"):
 		return print('unnamed file should be named "0.py"')
 
-	print("输入问题的ID：", end="")
+	print(colorama.Fore.LIGHTYELLOW_EX + "输入问题的ID：", end="")
 	id_ = input()
 
 	questions = await get_questions()
@@ -124,7 +126,7 @@ async def rename_mode():
 	new_path = f"{level_names[lv]}/Q{id_}_{name}.py"
 
 	os.rename("0.py", new_path)
-	print("rename 0.py to：" + new_path)
+	print(colorama.Fore.LIGHTBLUE_EX + "rename 0.py to：" + new_path)
 
 
 async def statistic_mode():
@@ -143,5 +145,5 @@ if __name__ == '__main__':
 		asyncio.get_event_loop().run_until_complete(rename_mode())
 	elif cmd == "-S":  # 统计模式
 		asyncio.get_event_loop().run_until_complete(statistic_mode())
-	elif cmd == "-C":  # 命名检查模式
+	elif cmd == "-C":  # 命名检查
 		asyncio.get_event_loop().run_until_complete(check())
