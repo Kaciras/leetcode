@@ -1,10 +1,9 @@
+from typing import List
+
+
 class Solution:
 
-	def removeDuplicates(self, nums):
-		"""
-		:type nums: List[int]
-		:rtype: int
-		"""
+	def removeDuplicates(self, nums: List[int]) -> int:
 		last, length = None, 0
 		for n in nums:
 			if last != n:

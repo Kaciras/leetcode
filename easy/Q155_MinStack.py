@@ -1,17 +1,11 @@
 class MinStack:
+	"""用stack里的值与最小值的差来记录上次最小值"""
 
 	def __init__(self):
-		"""
-		initialize your data structure here.
-		"""
 		self.stack = []
 		self.mininum = None
 
-	def push(self, x):
-		"""
-		:type x: int
-		:rtype: void
-		"""
+	def push(self, x: int):
 		if not self.stack:
 			self.stack.append(x)
 			self.mininum = x
@@ -20,20 +14,14 @@ class MinStack:
 			if x < self.mininum:
 				self.mininum = x
 
-	def pop(self):
-		"""
-		:rtype: void
-		"""
+	def pop(self) -> int:
 		if not self.stack:
 			return self.mininum
 		v = self.stack.pop()
 		if v < 0:
 			self.mininum -= v
 
-	def top(self):
-		"""
-		:rtype: int
-		"""
+	def top(self) -> int:
 		if len(self.stack) == 1:
 			return self.mininum
 		v = self.stack[-1]
@@ -41,11 +29,9 @@ class MinStack:
 			return v + self.mininum
 		return self.mininum
 
-	def getMin(self):
-		"""
-		:rtype: int
-		"""
+	def getMin(self) -> int:
 		return self.mininum
+
 
 if __name__ == '__main__':
 	obj = MinStack()

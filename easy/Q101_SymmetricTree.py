@@ -1,13 +1,25 @@
-from utils import TreeNode, binary_tree
+from utils import TreeNode, binary_tree, benckmark
 
 
 class Solution:
 
-	def isSymmetric(self, root):
+	def isSymmetric(self, root: TreeNode) -> bool:
+		"""把递归函数放外面比里面快了0.3秒/百万次"""
+		if not root:
+			return True
+		return self.cmp(root.left, root.right)
+
+	def cmp(self, left, right):
+		if not left:
+			return not right
+		if not right:
+			return not left
+		return left.val == right.val and self.cmp(left.left, right.right) and self.cmp(left.right, right.left)
+
+
+	def isSymmetric2(self, root: TreeNode) -> bool:
 		"""
-		队列果然比递归慢
-		:type root: TreeNode
-		:rtype: bool
+		队列比递归慢了
 		"""
 		if not root:
 			return True
@@ -33,3 +45,6 @@ class Solution:
 if __name__ == '__main__':
 	print(Solution().isSymmetric(binary_tree([1, 2, 2, 3, 4, 4, 3])))
 	print(Solution().isSymmetric(binary_tree([1, 2, 2, None, 3, None, 3])))
+
+	benckmark(Solution().isSymmetric, binary_tree([1, 2, 2, 3, 4, 4, 3]))
+	# benckmark(Solution().isSymmetric2, binary_tree([1, 2, 2, 3, 4, 4, 3]))

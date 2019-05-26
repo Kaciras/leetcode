@@ -1,10 +1,6 @@
 class Solution:
 
-	def countAndSay(self, n):
-		"""
-		:type n: int
-		:rtype: str
-		"""
+	def countAndSay(self, n: int) -> str:
 		s, x = "1", ""
 		for _ in range(n - 1):
 			v, count = s[0], 0
@@ -20,4 +16,4 @@ class Solution:
 
 if __name__ == '__main__':
 	for ii in range(1, 30):
-		print(Solution().countAndSay(ii))
+		print(Solution().countAndSay(ii) + "\n")

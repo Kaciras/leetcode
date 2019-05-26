@@ -4,7 +4,7 @@ from utils import linked_list, ListNode, linked_list_factory
 
 class Solution:
 
-	def mergeTwoLists(self, l1, l2):
+	def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
 		"""
 		链表与数组不同：
 		注意到直接设置next指针即意味着将链表的元素全部追加上去，故在

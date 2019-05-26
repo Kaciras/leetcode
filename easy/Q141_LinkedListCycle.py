@@ -1,12 +1,9 @@
-from utils import linked_list, ListNode, print_linked_list
+from utils import ListNode, print_linked_list
 
 
 class Solution:
-	def hasCycle(self, head):
-		"""
-		:type head: ListNode
-		:rtype: bool
-		"""
+
+	def hasCycle(self, head: ListNode) -> bool:
 		slow = fast = head
 		while fast:
 			slow, fast = slow.next, fast.next

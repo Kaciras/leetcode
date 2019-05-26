@@ -1,23 +1,24 @@
+from typing import List
+
+
 class Solution:
-	def merge(self, nums1, m, nums2, n):
+
+	def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
 		"""
-		:type nums1: List[int]
-		:type m: int
-		:type nums2: List[int]
-		:type n: int
-		:rtype: void Do not return anything, modify nums1 in-place instead.
+		关键是反向遍历，因为nums1的后面有空，所以不会干扰到nums1前面的数
 		"""
-		m, n, k = m - 1, n-1, m + n - 1
+		m, n, total = m - 1, n - 1, m + n - 1
 		while m >= 0 and n >= 0:
 			if nums1[m] < nums2[n]:
-				nums1[k] = nums2[n]
+				nums1[total] = nums2[n]
 				n -= 1
 			else:
-				nums1[k] = nums1[m]
+				nums1[total] = nums1[m]
 				m -= 1
-			k -= 1
+			total -= 1
 		if n >= 0:
 			nums1[:n + 1] = nums2[:n + 1]
+
 
 def test(a, b):
 	nums1 = [0] * (len(a) + len(b))

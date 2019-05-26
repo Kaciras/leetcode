@@ -1,12 +1,10 @@
-class Solution:
-	"""KMP 算法"""
+from utils import benckmark
 
-	def strStr(self, haystack, needle):
-		"""
-		:type haystack: str
-		:type needle: str
-		:rtype: int
-		"""
+
+class Solution:
+	"""KMP 算法，该算法原理是预先计算出匹配失败后模式串指针要跳回的位置，从而保证输入串指针不回溯"""
+
+	def strStr(self, haystack: str, needle: str) -> int:
 		if len(needle) == 0:
 			return 0
 		if len(needle) > len(haystack):
@@ -32,6 +30,7 @@ class Solution:
 					return i - j
 			else:
 				j = next_[j]
+
 		return -1
 
 
@@ -42,3 +41,4 @@ if __name__ == '__main__':
 	print(Solution().strStr("", "abc"))
 	print(Solution().strStr("hello", "ll"))
 	print(Solution().strStr("aaaaa", "bba"))
+	benckmark(Solution().strStr, "ababcabcaeabababca", "abababca", number=100000)

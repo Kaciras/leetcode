@@ -1,16 +1,14 @@
-from utils import TreeNode, binary_tree
+from typing import List
+
+from utils import TreeNode
 
 
 class Solution:
 
-	def sortedArrayToBST(self, nums):
+	def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
 		"""
-		更优的方法是不适用切片，而是使用索引来分隔左右两部分
-		:type nums: List[int]
-		:rtype: TreeNode
+		更优的方法是不使用切片，而是使用索引来分隔左右两部分
 		"""
-		if not nums:
-			return None
 		middle = len(nums) // 2
 		root = TreeNode(nums[middle])
 		root.left = self.sortedArrayToBST(nums[:middle])
@@ -20,4 +18,3 @@ class Solution:
 
 if __name__ == '__main__':
 	e = Solution().sortedArrayToBST([-10, -3, 0, 5, 9])
-	print()

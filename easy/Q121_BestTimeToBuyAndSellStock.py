@@ -1,11 +1,13 @@
-class Solution:
+from typing import List
 
-	def maxProfit(self, prices):
-		"""
-		:type prices: List[int]
-		:rtype: int
-		"""
-		buy, r = float("inf"), 0
+from utils import benckmark
+
+
+class Solution:
+	"""float(inf)改成0x7FFFFFFF，耗时降低0.2秒/百万次"""
+
+	def maxProfit(self, prices: List[int]) -> int:
+		buy, r = 0x7FFFFFFF, 0
 		for p in prices:
 			buy = min(buy, p)
 			r = max(p - buy, r)
@@ -13,5 +15,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-	print(Solution().maxProfit([7,1,5,3,6,4]))
-	print(Solution().maxProfit([7,6,4,3,1]))
+	print(Solution().maxProfit([7, 1, 5, 3, 6, 4]))
+	print(Solution().maxProfit([7, 6, 4, 3, 1]))
+
+	benckmark(Solution().maxProfit, [7, 1, 5, 3, 6, 4])

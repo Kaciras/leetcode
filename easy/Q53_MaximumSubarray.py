@@ -1,16 +1,16 @@
+from typing import List
+
+
 class Solution:
 
-	def maxSubArray(self, nums):
-		"""
-		:type nums: List[int]
-		:rtype: int
-		"""
-		squene, maxnum = 0,  nums[0]
+	def maxSubArray(self, nums: List[int]) -> int:
+		"""c是当前子序列的和，m是最大子序列的和"""
+		c, m = 0, nums[0]
 		for n in nums:
-			squene += n
-			if squene < n: squene = n
-			if squene > maxnum: maxnum = squene
-		return maxnum
+			c += n
+			if c < n: c = n
+			if c > m: m = c
+		return m
 
 
 if __name__ == '__main__':
