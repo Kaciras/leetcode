@@ -1,12 +1,11 @@
+from typing import List
+
+
 class Solution:
 	"""其他方法有使用字典来计数等"""
 
-	def intersect(self, nums1, nums2):
-		"""
-		:type nums1: List[int]
-		:type nums2: List[int]
-		:rtype: List[int]
-		"""
+	def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+		"""O(m + n)时间"""
 		nums1.sort()
 		nums2.sort()
 		r, i, j = [], 0, 0

@@ -1,12 +1,11 @@
 import collections
+from typing import List
 
 
 class Solution:
-	def majorityElement(self, nums):
-		"""
-		:type nums: List[int]
-		:rtype: int
-		"""
+
+	def majorityElement(self, nums: List[int]) -> int:
+		"""用字典记录出现的次数"""
 		return collections.Counter(nums).most_common(1)[0][0]
 
 

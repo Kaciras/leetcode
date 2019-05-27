@@ -4,12 +4,7 @@ from utils import linked_list, ListNode, print_linked_list
 class Solution:
 	"""从运行时间来看，先转整数再转回链表反而更快"""
 
-	def addTwoNumbers(self, l1, l2):
-		"""
-		:type l1: ListNode
-		:type l2: ListNode
-		:rtype: ListNode
-		"""
+	def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
 		head = node = ListNode(0)
 		carry = 0
 
@@ -30,6 +25,7 @@ class Solution:
 
 		if carry == 1:
 			node.next = ListNode(1)
+
 		return head.next
 
 

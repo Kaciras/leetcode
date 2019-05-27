@@ -2,11 +2,8 @@ from utils import linked_list, ListNode, print_linked_list
 
 
 class Solution:
-	def reverseList(self, head):
-		"""
-		:type head: ListNode
-		:rtype: ListNode
-		"""
+
+	def reverseList(self, head: ListNode) -> ListNode:
 		prev = None
 		while head:
 			head.next, prev, head = prev, head, head.next

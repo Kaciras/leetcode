@@ -1,9 +1,9 @@
+from typing import List
+
+
 class Solution:
-	def fizzBuzz(self, n):
-		"""
-		:type n: int
-		:rtype: List[str]
-		"""
+
+	def fizzBuzz(self, n: int) -> List[str]:
 		result = [0] * n
 		while n > 0:
 			if n % 15 == 0:

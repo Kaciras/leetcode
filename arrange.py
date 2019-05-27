@@ -12,7 +12,7 @@ colorama.init(autoreset=True)
 
 level_names = ["", "easy", "medium", "hard"]
 
-CACHE_FILE = "questions.cache.json"
+CACHE_FILE = "temp/questions.cache.json"
 
 
 async def get_questions():

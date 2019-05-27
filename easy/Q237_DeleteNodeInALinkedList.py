@@ -1,11 +1,8 @@
 from utils import linked_list, ListNode, print_linked_list
 
 class Solution:
-	def deleteNode(self, node):
-		"""
-		:type node: ListNode
-		:rtype: void Do not return anything, modify node in-place instead.
-		"""
+
+	def deleteNode(self, node: ListNode) -> None:
 		node.val = node.next.val
 		node.next = node.next.next
 

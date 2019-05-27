@@ -1,7 +1,7 @@
 class Solution:
 
 	def reverseBits(self, n):
-		"""使用二进制字符串来翻转"""
+		"""转成二进制的字符串来翻转"""
 		b = bin(n)[2:]
 		b = "0" * (32 - len(b)) + b
 		return int(b[::-1], 2)

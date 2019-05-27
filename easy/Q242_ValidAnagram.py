@@ -2,14 +2,9 @@ import collections
 
 
 class Solution:
-	"""其实就是统计字符的个数"""
 
-	def isAnagram(self, s, t):
-		"""
-		:type s: str
-		:type t: str
-		:rtype: bool
-		"""
+	def isAnagram(self, s: str, t: str) -> bool:
+		"""其实就是统计字符的个数"""
 		return collections.Counter(s) == collections.Counter(t)
 
 

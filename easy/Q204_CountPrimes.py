@@ -2,7 +2,8 @@ import math
 
 class Solution:
 
-	def countPrimes(self, n):
+	def countPrimes(self, n: int) -> int:
+		"""厄拉多塞筛选法"""
 		if n < 3:
 			return 0
 		arr = [1] * n
@@ -11,10 +12,8 @@ class Solution:
 				arr[i + i: n: i] = [0] * len(arr[i + i:n:i])
 		return sum(arr) - 2
 
-	def countPrimes_old(self, n):
-		"""
-		这个方法超时了，但是无需额外空间
-		"""
+	def countPrimes2(self, n: int) -> int:
+		"""两层循环挨个判断是否能整除。超时了，但是无需额外空间"""
 		if n < 3:
 			return 0
 

@@ -6,11 +6,8 @@ def isBadVersion(version):
 
 
 class Solution:
-	def firstBadVersion(self, n):
-		"""
-		:type n: int
-		:rtype: int
-		"""
+
+	def firstBadVersion(self, n: int) -> int:
 		l, mid = 1, (1 + n) // 2
 		while l < n:
 			if isBadVersion(mid):

@@ -1,9 +1,6 @@
 class Solution:
-	def isHappy(self, n):
-		"""
-		:type n: int
-		:rtype: bool
-		"""
+
+	def isHappy(self, n: int) -> bool:
 		contains = set()
 		while n not in contains:
 			contains.add(n)

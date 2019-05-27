@@ -1,24 +1,23 @@
+from typing import List
+
+
 class Solution:
 
-	def rob(self, nums):
-		"""
-		:type nums: List[int]
-		:rtype: int
-		"""
+	def rob(self, nums: List[int]) -> int:
+		"""最大收益 = max(前第二个偷了的 + 这次收益，前一个的收益)"""
 		if len(nums) == 0:
 			return 0
-		if len(nums) == 1:
-			return nums[0]
 
 		steal = last_steal = 0
 		for n in nums:
-			temp = last_steal
-			last_steal = steal
-			steal = max(temp + n, steal)
+			prev2, last_steal = last_steal, steal
+			steal = max(prev2 + n, steal)
+
 		return steal
 
 
 if __name__ == '__main__':
-	print(Solution().rob([100]))
-	print(Solution().rob([1, 2, 3, 1]))
-	print(Solution().rob([2, 7, 9, 3, 1]))
+	assert Solution().rob([1, 2, 3, 1]) == 4
+	assert Solution().rob([2, 7, 9, 3, 1]) == 12
+	assert Solution().rob([100]) == 100
+	assert Solution().rob([100, 200]) == 200

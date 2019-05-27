@@ -1,9 +1,6 @@
 class Solution:
-	def titleToNumber(self, s):
-		"""
-		:type s: str
-		:rtype: int
-		"""
+
+	def titleToNumber(self, s: str) -> int:
 		result, redix = 0, 1
 		for ch in s[::-1]:
 			result += (ord(ch) - 64) * redix

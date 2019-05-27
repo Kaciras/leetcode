@@ -1,9 +1,10 @@
+from typing import List
+
+
 class Solution:
-	def missingNumber(self, nums):
-		"""
-		:type nums: List[int]
-		:rtype: int
-		"""
+
+	def missingNumber(self, nums: List[int]) -> int:
+		"""只缺失一个数的话可以直接减出来"""
 		return len(nums) * (len(nums) + 1) // 2 - sum(nums)
 
 
