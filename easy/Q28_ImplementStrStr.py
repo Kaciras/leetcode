@@ -41,4 +41,4 @@ if __name__ == '__main__':
 	print(Solution().strStr("", "abc"))
 	print(Solution().strStr("hello", "ll"))
 	print(Solution().strStr("aaaaa", "bba"))
-	benckmark(Solution().strStr, "ababcabcaeabababca", "abababca", number=100000)
+	benckmark(Solution().strStr, "ababcabcaeabababca", "abababca", ratio=0.1)

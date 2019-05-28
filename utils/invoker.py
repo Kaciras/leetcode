@@ -5,7 +5,7 @@ import timeit
 
 def serial_call(ops, arglist, module=sys.modules["__main__"]):
 	"""
-	用于调用LeetCode错误信息中使用俩数组表示的输入，例如：
+	用于调用 LeetCode 错误信息中使用俩数组表示的输入，例如：
 	(操作数组) ["LRUCache","put","put","put","put", "get", "get"]
 	(参数列表) [[10], [10,13], [3,17], [6,11], [10,5], [7], [8]]
 
@@ -25,7 +25,7 @@ def serial_call(ops, arglist, module=sys.modules["__main__"]):
 			raise
 
 
-def benckmark(function, *args, number=timeit.default_number):
+def benckmark(function, *args, ratio=1):
 	"""
 	测试函数的耗时，在控制台中打印相关信息。
 
@@ -33,7 +33,7 @@ def benckmark(function, *args, number=timeit.default_number):
 
 	:param function: 被测函数
 	:param args: 被测函数的参数列表
-	:param number: 测量循环次数
+	:param ratio: 循环次数倍率，越大测量越精确，但需要更长的时间
 	"""
 
 	def prepare_arguments():
@@ -59,7 +59,7 @@ def benckmark(function, *args, number=timeit.default_number):
 	# 故只能把两次计时放在循环外，这样一来也就没办法排除 prepare_arguments 的时间。
 	timer = timeit.Timer("function(*prepare_arguments())", globals=locals())
 
-	times = timer.repeat(number=number)
+	times = timer.repeat(number=int(timeit.default_number * ratio))
 	for usage in times:
-		print(round(usage, 5))
-	print(f"平均用时：{round(statistics.mean(times), 5)} 秒/百万次")
+		print(round(usage / ratio, 5))
+	print(f"平均用时：{round(statistics.mean(times) / ratio, 5)} 秒/百万次")
