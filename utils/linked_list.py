@@ -1,8 +1,11 @@
+from typing import Optional
+
+
 class ListNode:
 
 	def __init__(self, x):
 		self.val = x
-		self.next = None
+		self.next: Optional[ListNode] = None
 
 	def __str__(self):
 		# 链表可能有环，所以不能再此方法内打印全部节点
@@ -29,7 +32,7 @@ class ListNode:
 		return length
 
 
-def linked_list(values):
+def linked_list(values) -> ListNode:
 	head_, previous = None, None
 	for v in values:
 		node = ListNode(v)

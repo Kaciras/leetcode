@@ -1,6 +1,7 @@
 import statistics
 import sys
 import timeit
+from typing import Callable
 
 
 def serial_call(ops, arglist, module=sys.modules["__main__"]):
@@ -25,7 +26,7 @@ def serial_call(ops, arglist, module=sys.modules["__main__"]):
 			raise
 
 
-def benckmark(function, *args, ratio=1):
+def benckmark(function: Callable, *args, ratio=1):
 	"""
 	测试函数的耗时，在控制台中打印相关信息。
 
@@ -57,6 +58,8 @@ def benckmark(function, *args, ratio=1):
 	#
 	# 由于被测函数通常都不会用时很长，这么一来两次计时(perf_counter)时间过于接近，从而产生较大的误差。
 	# 故只能把两次计时放在循环外，这样一来也就没办法排除 prepare_arguments 的时间。
+	#
+	# 这样做影响是会增大不同参数下的运行时间，特别是有工厂函数时，但对于同样的参数之间的比较则无影响。
 	timer = timeit.Timer("function(*prepare_arguments())", globals=locals())
 
 	times = timer.repeat(number=int(timeit.default_number * ratio))

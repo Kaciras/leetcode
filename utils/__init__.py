@@ -1,9 +1,9 @@
 """
 辅助模块，包含构建链表、二叉树，打印数据结构到控制台等便捷方法
 """
-from utils.bintree import *
+from utils.binary_tree import *
 from utils.invoker import *
-from utils.linkedlist import *
+from utils.linked_list import *
 
 
 def print_martix(martix):

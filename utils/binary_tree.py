@@ -1,4 +1,5 @@
 import collections
+from typing import Optional
 
 
 def not_null(*args):
@@ -9,8 +10,8 @@ class TreeNode:
 
 	def __init__(self, x):
 		self.val = x
-		self.left = None
-		self.right = None
+		self.left: Optional[TreeNode] = None
+		self.right: Optional[TreeNode] = None
 
 	def __repr__(self):
 		return str(self.val)
