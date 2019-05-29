@@ -27,10 +27,10 @@ async def get_questions():
 		ts = (last_update -  datetime.fromtimestamp(0)).total_seconds()
 
 		if os.stat(CACHE_FILE).st_mtime > ts:
-			print("使用缓存的题库")
+			print("使用缓存的题库 - " + CACHE_FILE)
 			return json.load(open(CACHE_FILE, "r"))
 
-	print("从LeetCode下载题库")
+	print("从LeetCode中文站下载题库")
 	questions = await get_questions_online()
 	json.dump(questions, open(CACHE_FILE, "w"))
 	return questions
@@ -38,7 +38,6 @@ async def get_questions():
 
 async def get_questions_online():
 	"""抓取所有题目列表"""
-	print("从网站上下载题目列表...")
 
 	def extract(p):
 		stat, lv = p["stat"], p["difficulty"]["level"]
@@ -116,7 +115,7 @@ async def rename_mode():
 		return print('unnamed file should be named "0.py"')
 
 	print(colorama.Fore.LIGHTYELLOW_EX + "输入问题的ID：", end="")
-	id_ = input()
+	id_ = input().strip()
 
 	questions = await get_questions()
 	if id_ not in questions:
@@ -126,7 +125,8 @@ async def rename_mode():
 	new_path = f"{level_names[lv]}/Q{id_}_{name}.py"
 
 	os.rename("0.py", new_path)
-	print(colorama.Fore.LIGHTBLUE_EX + "rename 0.py to：" + new_path)
+	os.system("git add " + new_path)
+	print(colorama.Fore.LIGHTBLUE_EX + "归档新的解答：" + new_path)
 
 
 async def statistic_mode():
