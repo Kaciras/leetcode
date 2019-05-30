@@ -24,23 +24,26 @@ async def get_questions():
 		dof = (date.today().weekday() + 1) % 7
 		last_sunday = datetime.now() - timedelta(days=dof)
 		last_update = last_sunday.replace(hour=12, minute=0, second=0, microsecond=0)
-		ts = (last_update -  datetime.fromtimestamp(0)).total_seconds()
+		ts = (last_update - datetime.fromtimestamp(0)).total_seconds()
 
 		if os.stat(CACHE_FILE).st_mtime > ts:
 			print("使用缓存的题库 - " + CACHE_FILE)
-			return json.load(open(CACHE_FILE, "r"))
+			with open(CACHE_FILE, "r") as fp:
+				return json.load(fp)
 
 	print("从LeetCode中文站下载题库")
 	questions = await get_questions_online()
-	json.dump(questions, open(CACHE_FILE, "w"))
+	with open(CACHE_FILE, "w") as fp:
+		json.dump(questions, fp)
+
 	return questions
 
 
 async def get_questions_online():
 	"""抓取所有题目列表"""
 
-	def extract(p):
-		stat, lv = p["stat"], p["difficulty"]["level"]
+	def extract(item):
+		stat, lv = item["stat"], item["difficulty"]["level"]
 		title, stitle = stat["question__title"], stat["question__title_slug"]
 		return {"name": process_title(title), "level": int(lv), }
 
@@ -57,7 +60,7 @@ async def get_questions_online():
 
 
 def process_title(text):
-	"""从网站采集的题目可能含有无法作为Python模块名的字符，需要去掉"""
+	"""从网站采集的题目可能含有无法作为Python模块名的字符，需要处理一下"""
 
 	# 去除所有的标点符号
 	text = text.translate(str.maketrans("", "", string.punctuation))
