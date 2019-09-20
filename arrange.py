@@ -27,7 +27,7 @@ async def get_questions():
 		ts = (last_update - datetime.fromtimestamp(0)).total_seconds()
 
 		if os.stat(CACHE_FILE).st_mtime > ts:
-			print("使用缓存的题库 - " + CACHE_FILE)
+			print("使用缓存的题库")
 			with open(CACHE_FILE, "r") as fp:
 				return json.load(fp)
 
@@ -113,14 +113,15 @@ async def check():
 
 
 async def rename_mode():
-	"""重命名功能，自动查找问题的难度和名字，将临时文件 0.py 改名并移动到合适的目录"""
+	"""重命名功能，自动查找问题的难度和名字，将临时文件 0.py 移动到合适的目录"""
 	if not os.path.exists("0.py"):
 		return print('unnamed file should be named "0.py"')
+
+	questions = await get_questions()
 
 	print(colorama.Fore.LIGHTYELLOW_EX + "输入问题的ID：", end="")
 	id_ = input().strip()
 
-	questions = await get_questions()
 	if id_ not in questions:
 		return print(colorama.Fore.LIGHTRED_EX + "在题库中找不到指定ID的问题")
 
