@@ -4,6 +4,7 @@ import os
 import string
 import sys
 from datetime import datetime, date, timedelta
+from pathlib import Path
 
 import aiohttp
 import colorama
@@ -12,13 +13,13 @@ colorama.init(autoreset=True)
 
 level_names = ["", "easy", "medium", "hard"]
 
-CACHE_FILE = "temp/questions.cache.json"
+CACHE_FILE = Path("temp/questions.cache.json")
 
 
 async def get_questions():
 	"""先查看本地缓存的题目列表，没有或者一星期没更新就去网上抓"""
 
-	if "-online" not in sys.argv and os.path.exists(CACHE_FILE):
+	if "-online" not in sys.argv and CACHE_FILE.exists():
 
 		# LeetCode 在每周末的中午12点结束比赛，同时公开比赛题目
 		dof = (date.today().weekday() + 1) % 7
@@ -26,15 +27,12 @@ async def get_questions():
 		last_update = last_sunday.replace(hour=12, minute=0, second=0, microsecond=0)
 		ts = (last_update - datetime.fromtimestamp(0)).total_seconds()
 
-		if os.stat(CACHE_FILE).st_mtime > ts:
+		if CACHE_FILE.stat().st_mtime > ts:
 			print("使用缓存的题库")
-			with open(CACHE_FILE, "r") as fp:
-				return json.load(fp)
+			return json.loads(CACHE_FILE.read_text())
 
-	print("从LeetCode中文站下载题库")
 	questions = await get_questions_online()
-	with open(CACHE_FILE, "w") as fp:
-		json.dump(questions, fp)
+	CACHE_FILE.write_text(json.dumps(questions))
 
 	return questions
 
@@ -98,7 +96,7 @@ async def check():
 		for file in sorted(os.listdir(ln)):
 			id_, name = file.split("_")
 			name = name[:-3]
-			q = questions[int(id_)]
+			q = questions[id_]
 			errors = []
 
 			if q["name"] != name:
