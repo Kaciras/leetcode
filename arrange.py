@@ -131,8 +131,11 @@ async def rename_mode():
 	new_path = f"{level_names[lv]}/Q{id_}_{name}.py"
 
 	os.rename("0.py", new_path)
-	os.system("git add " + new_path)
-	print(colorama.Fore.LIGHTBLUE_EX + "归档新的解答：" + new_path)
+
+	if os.system("git add " + new_path) == 0:
+		print(colorama.Fore.LIGHTBLUE_EX + "归档新的解答：" + new_path)
+	else:
+		print(colorama.Fore.LIGHTRED_EX + "Git Add 失败")
 
 
 async def statistic_mode():
