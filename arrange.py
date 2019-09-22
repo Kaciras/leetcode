@@ -53,8 +53,10 @@ async def get_questions_online():
 			data = await resp.json(content_type="text/html")
 			print("从LeetCode中文站下载问题列表，总计：" + str(data['num_total']))
 
+			# question_id 是整数，但是整数不能作为JSON对象的键，所以转换为字符串
 			for pair in data['stat_status_pairs']:
-				questions[pair["stat"]["question_id"]] = extract(pair)
+				id_ = pair["stat"]["question_id"]
+				questions[str(id_)] = extract(pair)
 
 			return questions
 
