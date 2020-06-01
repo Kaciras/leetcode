@@ -13,7 +13,7 @@ colorama.init(autoreset=True)
 
 level_names = ["", "easy", "medium", "hard"]
 
-CACHE_FILE = Path("temp/questions.cache.json")
+CACHE_FILE = Path("temp/questions.json")
 
 
 async def get_questions():
@@ -113,7 +113,12 @@ async def check():
 
 
 async def rename_mode():
-	"""重命名功能，自动查找问题的难度和名字，将临时文件 0.py 移动到合适的目录"""
+	"""
+	重命名功能，自动查找问题的难度和名字，将临时文件 0.py 移动到合适的目录。
+
+	新的文件名格式为：Q<ID>_<Name>.py
+	因为以数字开头的文件无法被import，所以在前面加了个Q（Question）。
+	"""
 	if not os.path.exists("0.py"):
 		return print('unnamed file should be named "0.py"')
 
