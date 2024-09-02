@@ -1,6 +1,6 @@
 pub struct Solution {}
 
-// 操蛋，看别人的写法整二维数组的竟然比我这一维的还快，看来是我给搞复杂了。
+// 没啥好说的，删除时直接把末尾的换过来即可。
 impl Solution {
 	pub fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {
 		let mut k = nums.len();
