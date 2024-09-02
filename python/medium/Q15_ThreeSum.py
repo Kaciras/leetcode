@@ -2,31 +2,34 @@ import collections
 
 
 class Solution:
-	def threeSum(self, nums):
-		"""使用Counter计数并去重，然后再判断各种情况，是最优的解法"""
-		ct = collections.Counter(nums)
+	def threeSum(self, nums: list[int]) -> list[list[int]]:
+		"""使用 Counter 计数并去重，然后再判断各种情况，是最快的解法"""
+		counter = collections.Counter(nums)
 		pos, neg, result = [], [], []
 
-		for v in ct.keys():
+		for v in counter.keys():
 			if v >= 0:
 				pos.append(v)
 			else:
 				neg.append(v)
 
-		if ct.get(0) > 2:
+		# 全零的话不需要正负数，看下有没有足够的 0 即可。
+		if counter[0] > 2:
 			result.append([0, 0, 0])
 
+		# 要归零，一定得有正数和负数，然后再找一个差值凑三个。
 		for i in pos:
 			for j in neg:
 				e = -(i + j)
-				if j < e < i:
+				if j < e < i and counter[e] > 0:
 					result.append([i, j, e])
-				elif (e == i or e == j) and ct[e] > 1:
+				elif (e == i or e == j) and counter[e] > 1:
 					result.append([i, j, e])
+
 		return result
 
 	def threeSum3(self, nums):
-		"""排序从两边扫描，外层只遍历正数"""
+		"""排序从两边扫描，外层只遍历正数，该实现内存占用小"""
 		nums.sort()
 		i, p, result = 0, None, []
 
@@ -57,9 +60,7 @@ class Solution:
 		return result
 
 	def threeSum2(self, nums):
-		"""
-		用Set去重会超时
-		"""
+		"""用 Set 去重会超时"""
 		result, set_, v1, v2 = [], set(nums), set(), set()
 
 		for i in range(len(nums) - 2):
@@ -77,10 +78,13 @@ class Solution:
 					v1.add(nums[j])
 					v2.add(b)
 					v2.add(nums[j])
+
 		return result
 
 
 if __name__ == '__main__':
+	print(Solution().threeSum([1, 2, -2, -1]))  # 2
+	print(Solution().threeSum([1, 1, -2]))  # 1
 	print(Solution().threeSum([-2, 0, 1, 1, 2]))  # 2
 	print(Solution().threeSum([-1, 0, 1, 0]))  # 1
 	print(Solution().threeSum([0, 0, 0, 0, 0, 0]))  # 1
