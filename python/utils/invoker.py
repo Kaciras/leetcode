@@ -62,7 +62,9 @@ def benckmark(function: Callable, *args, ratio=1):
 	# 这样做影响是会增大不同参数下的运行时间，特别是有工厂函数时，但对于同样的参数之间的比较则无影响。
 	timer = timeit.Timer("function(*prepare_arguments())", globals=locals())
 
+	# noinspection PyUnresolvedReferences
 	times = timer.repeat(number=int(timeit.default_number * ratio))
 	for usage in times:
 		print(round(usage / ratio, 5))
+
 	print(f"平均用时：{round(statistics.mean(times) / ratio, 5)} 秒/百万次")

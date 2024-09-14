@@ -1,41 +1,27 @@
 class Solution:
 
 	def lengthOfLongestSubstring(self, s: str) -> int:
-		last = {}
-		left = longest = 0
+		"""
+		要记录不同元素的位置，一个 Map 是必要的。
+		遍历每个元素，记录下每个字最后出现的位置，再出现时即字串结束。
+		"""
+		left, longest, last = 0, 0, {}
 
 		for i, char in enumerate(s):
-			if (char in last) and (last[char] >= left):
+			j = last.get(char)
+			if j is not None and j >= left:
 				if i - left > longest:
 					longest = i - left
-				left = last[char] + 1
+				left = j + 1
 			last[char] = i
 
-		if len(s) - left > longest:
-			return len(s) - left
-
-		return longest
-
-	def lengthOfLongestSubstring2(self, s: str) -> int:
-		result, current, set_ = 0, [], set()
-
-		for ch in s:
-			if ch in set_:
-				while True:
-					d = current[0]
-					set_.remove(d)
-					del current[0]
-					if d == ch:
-						break
-			set_.add(ch)
-			current.append(ch)
-			result = max(result, len(current))
-
-		return result
+		return max(longest, len(s) - left)
 
 
 if __name__ == '__main__':
-	print(Solution().lengthOfLongestSubstring(""))
-	print(Solution().lengthOfLongestSubstring("abcabcbb"))  # 3
-	print(Solution().lengthOfLongestSubstring("bbbbb"))  # 1
-	print(Solution().lengthOfLongestSubstring("pwwkew"))  # 3
+	assert Solution().lengthOfLongestSubstring("") == 0
+	assert Solution().lengthOfLongestSubstring(" ") == 1
+	assert Solution().lengthOfLongestSubstring("abcabcbb") == 3
+	assert Solution().lengthOfLongestSubstring("bbbbb") == 1
+	assert Solution().lengthOfLongestSubstring("pwwkew") == 3
+	assert Solution().lengthOfLongestSubstring("abba") == 2

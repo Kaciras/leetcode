@@ -1,12 +1,7 @@
 class Solution:
 	"""另一种更好的办法是使用切片来比较，并跳过比最长短的"""
 
-	def longestPalindrome(self, s):
-		"""
-		:type s: str
-		:rtype: str
-		"""
-
+	def longestPalindrome(self, s: str) -> str:
 		def palindrome(j, k):
 			while j >= 0 and k < len(s) and s[j] == s[k]:
 				j -= 1
@@ -25,5 +20,5 @@ if __name__ == '__main__':
 	print(Solution().longestPalindrome("ccc"))
 	print(Solution().longestPalindrome("a"))
 	print(Solution().longestPalindrome(""))
-	print(Solution().longestPalindrome("babad"))
-	print(Solution().longestPalindrome("cbbd"))
+	print(Solution().longestPalindrome("babad")) # bab
+	print(Solution().longestPalindrome("cbbd")) # bb

@@ -1,15 +1,13 @@
-from typing import List
-
 MAX_INT, MIN_INT = 2147483647, -2147483648
 
 
 class Solution:
 	"""
-	1.不要被题目的复杂度误导，log(m + n)包含比他小的log(min(m, n))
-	2.
+	1.不要被题目的复杂度误导，log(m + n) 包含比他小的 log(min(m, n))
+	2.Hard 题多半都考某个数学知识，不知道就没辙。
 	"""
 
-	def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+	def findMedianSortedArrays(self, nums1: list[int], nums2: list[int]) -> float:
 		n1, n2 = len(nums1), len(nums2)
 		if n1 > n2:
 			return self.findMedianSortedArrays(nums2, nums1)

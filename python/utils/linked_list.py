@@ -1,14 +1,14 @@
 from typing import Optional
 
 
-class ListNode:
+class ListNode[T]:
 
-	def __init__(self, x):
-		self.val = x
-		self.next: Optional[ListNode] = None
+	def __init__(self, x: T, next_=None):
+		self.val: T = x
+		self.next: Optional[ListNode[T]] = next_
 
 	def __str__(self):
-		# 链表可能有环，所以不能再此方法内打印全部节点
+		# 链表可能有环，所以不能在此方法内打印全部节点
 		if self.next:
 			t = str(self.val) + " -> " + str(self.next.val)
 		else:
@@ -32,7 +32,7 @@ class ListNode:
 		return length
 
 
-def linked_list(values) -> ListNode:
+def linked_list(values: list) -> ListNode:
 	head_, previous = None, None
 	for v in values:
 		node = ListNode(v)
@@ -48,12 +48,12 @@ def linked_list_factory(values):
 	return lambda: linked_list(values)
 
 
-def print_linked_list(node):
+def print_linked_list(node: ListNode):
 	"""
-	在控制台上打印链表
-	:type node: ListNode
+	在控制台上打印链表，与 LeetCode 的格式相同。
 	"""
 	visited = set()
+
 	while node:
 		if node in visited:
 			print(f"{node.val}(环)")
@@ -63,4 +63,5 @@ def print_linked_list(node):
 		node = node.next
 		if node:
 			print(" -> ", end="")
-	print()
+
+	print() # 一般不会在同一行加什么了，可以换行。

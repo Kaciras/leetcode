@@ -1,32 +1,26 @@
 class Solution:
-	def myAtoi(self, str):
-		"""
-		:type str: str
-		:rtype: int
-		"""
-		str = str.lstrip()
-		if len(str) == 0:
+
+	def myAtoi(self, s: str) -> int:
+		s = s.lstrip()
+		if len(s) == 0:
 			return 0
 		i, r, signum = 0, 0, 1
 
-		if str[0] == "-":
+		if s[0] == "-":
 			i, signum = 1, -1
-		elif str[0] == "+":
+		elif s[0] == "+":
 			i = 1
 
-		while i < len(str):
-			v = ord(str[i]) - 48 # 48换为ord("0")更可读
+		while i < len(s):
+			v = ord(s[i]) - 48 # 48 换为 ord("0") 更可读
 			if not 0 <= v < 10:
-				break # 可以换用isdigit()
-			r = r * 10 + v
+				break # 可以换用 isdigit()
 			i += 1
+			r = r * 10 + v
+
 		r *= signum
 
-		if r > 2 ** 31 - 1:
-			return 2 ** 31 - 1
-		if r < -2 ** 31:
-			return -2 ** 31
-		return r
+		return max(-2 ** 31, min(r, 2 ** 31 - 1))
 
 
 if __name__ == '__main__':

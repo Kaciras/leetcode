@@ -6,26 +6,26 @@ def not_null(*args):
 	return filter(lambda x: x is not None, args)
 
 
-class TreeNode:
+class TreeNode[T]:
 
-	def __init__(self, x):
+	def __init__(self, x: T):
 		self.val = x
-		self.left: Optional[TreeNode] = None
-		self.right: Optional[TreeNode] = None
+		self.left: Optional[TreeNode[T]] = None
+		self.right: Optional[TreeNode[T]] = None
 
 	def __repr__(self):
 		return str(self.val)
 
 
-def binary_tree(values):
+def binary_tree(values: list) -> TreeNode:
 	"""
-	根据列表创建二叉树
-	:param values: 节点值的列表,其中None值代表节点不存在
-	:return: 树的根节点
-	:rtype: TreeNode
+	根据列表创建二叉树，是 LeetCode 的常见操作。
+
+	:param values: 节点值的列表,其中 None 值代表节点不存在
+	:return: 根节点
 	"""
 	if not values:
-		return None
+		raise TypeError("二叉树的输入为空，会有这种情况吗？")
 
 	root = TreeNode(values[0])
 	queue, leave = collections.deque(), collections.deque(values[1:])
@@ -49,5 +49,5 @@ def binary_tree(values):
 	return root
 
 
-def print_binart_tree(node):
+def print_binary_tree(node):
 	pass
