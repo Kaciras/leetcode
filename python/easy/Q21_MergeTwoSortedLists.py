@@ -7,8 +7,8 @@ class Solution:
 	def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
 		"""
 		链表与数组不同：
-		注意到直接设置next指针即意味着将链表的元素全部追加上去，故在
-		其中一个链表剩余元素为0时可以直接将另一个追加到尾部
+		注意到直接设置 next 指针即意味着将链表的元素全部追加上去，
+		故在其中一个链表剩余元素为 0 时可以直接将另一个追加到尾部。
 		"""
 		prev_head = node = ListNode(None)
 

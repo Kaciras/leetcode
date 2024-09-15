@@ -1,24 +1,22 @@
+from ..utils import ListNode
+
+
 class Solution:
 	"""
 	一趟扫描 + 原地删除
 
-	先将起始节点向后移动n+1个，并创建指向头的nth指针。然后继续遍历并移动当前指针和nth指针，遍历结束
-	后nth指针即为倒数第n+1位置的节点，替换其next即可
+	先将起始节点向后移动 n+1 个，并创建指向头的 nth 指针。然后继续遍历并移动当前指针和 nth 指针，遍历结束
+	后 nth 指针即为倒数第 n+1 位置的节点，替换其 next 即可
 	"""
 
-	def removeNthFromEnd(self, head, n):
-		"""
-		:type head: ListNode
-		:type n: int
-		:rtype: ListNode
-		"""
-		node = head
+	def removeNthFromEnd(self, head: ListNode, n: int):
+		node = nth = head
 		for i in range(n + 1):
-			if not node: # 没有倒数第n+1项，说明删除的是链表头
-				return head.next
 			node = node.next
 
-		nth = head
+		# 没有倒数第 n+1 项，说明删的是头
+		if not node:
+			return head.next
 
 		while node:
 			nth = nth.next

@@ -1,13 +1,10 @@
-from typing import List
-
-
 class Solution:
 	"""
 	min() 函数中 key 的使用
 	enumerate() 用来同时遍历索引和元素
 	"""
 
-	def longestCommonPrefix(self, strs: List[str]) -> str:
+	def longestCommonPrefix(self, strs: list[str]) -> str:
 		if not strs:
 			return ""
 		shortest = min(strs, key=len)
@@ -20,6 +17,6 @@ class Solution:
 
 if __name__ == '__main__':
 	print(Solution().longestCommonPrefix([]))
-	print(Solution().longestCommonPrefix(["flower","flow","flight"]))
+	print(Solution().longestCommonPrefix(["flower", "flow", "flight"]))
 	print(Solution().longestCommonPrefix(["a"]))
-	print(Solution().longestCommonPrefix(["aca","cba"]))
+	print(Solution().longestCommonPrefix(["aca", "cba"]))
