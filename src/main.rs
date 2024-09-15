@@ -3,6 +3,9 @@ mod q9_palindrome_number;
 mod q27_remove_elements;
 mod q80_remove_duplicates_from_sorted_array_2;
 mod q32_longest_valid_parentheses;
+mod q12_integer_to_roman;
+mod q10_container_with_most_water;
+mod q3024_type_of_triangle;
 
 fn main() {
 
