@@ -1,10 +1,8 @@
 class Solution:
-	def searchRange(self, nums, target):
-		"""
-		:type nums: List[int]
-		:type target: int
-		:rtype: List[int]
-		"""
+	"""就是二分搜索，只不过相等时有两种不同的处理情况"""
+
+	def searchRange(self, nums: list[int], target: int):
+
 		def bs(lo, hi, on_equal_left):
 			if lo == hi:
 				return lo
@@ -18,10 +16,10 @@ class Solution:
 			else:
 				return bs(mid + 1, hi, on_equal_left)
 
-		start, end = bs(0, len(nums), True), bs(0, len(nums), False) - 1
-		if end < start:
-			return [-1, -1]
-		return [start, end]
+		start = bs(0, len(nums), True)
+		end = bs(0, len(nums), False) - 1
+
+		return [-1, -1] if end < start else [start, end]
 
 
 if __name__ == '__main__':

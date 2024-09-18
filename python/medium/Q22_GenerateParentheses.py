@@ -1,9 +1,7 @@
 class Solution:
-	def generateParenthesis(self, n):
-		"""
-		:type n: int
-		:rtype: List[str]
-		"""
+	"""建立二叉树模型，分析路径比较容易理解"""
+
+	def generateParenthesis(self, n: int):
 		result = []
 
 		def generate(left, right, pars):

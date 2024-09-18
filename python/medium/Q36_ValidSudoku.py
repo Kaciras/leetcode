@@ -1,9 +1,5 @@
 class Solution:
-	def isValidSudoku(self, board):
-		"""
-		:type board: List[List[str]]
-		:rtype: bool
-		"""
+	def isValidSudoku(self, board: list[list[str]]):
 		rows = [{} for _ in range(9)]
 		columns = [{} for _ in range(9)]
 		blocks = [{} for _ in range(9)]

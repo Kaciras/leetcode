@@ -2,7 +2,10 @@ from utils import benckmark
 
 
 class Solution:
-	"""KMP 算法，该算法原理是预先计算出匹配失败后模式串指针要跳回的位置，从而保证输入串指针不回溯"""
+	"""
+	KMP 算法，预先计算出匹配失败后模式串指针要跳回的位置，从而保证指针不回溯。
+	当然，最佳实现是调用几乎所有语言都有的 indexOf() API。
+	"""
 
 	def strStr(self, haystack: str, needle: str) -> int:
 		if len(needle) == 0:
