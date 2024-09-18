@@ -1,6 +1,7 @@
 pub struct Solution {}
 
 impl Solution {
+	// 最直观的方法，记下重复的数量，删除设为特殊值最后排序。
 	pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
 		let mut previous = nums[0];
 		let mut repeat = 1;
