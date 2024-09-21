@@ -1,20 +1,17 @@
 class Solution:
 	"""可以使用一个辅助数组，代码较少。本例使用直接交换法"""
 	
-	def rotate(self, matrix):
-		"""
-		:type matrix: List[List[int]]
-		:rtype: void Do not return anything, modify matrix in-place instead.
-		"""
-		i, t = 0, 0
-		while i + i < len(matrix):
-			for j in range(i, len(matrix) - i - 1):
+	def rotate(self, matrix: list[list[int]]):
+		t, n = 0, len(matrix)
+		# 顶部的循环是层数，总共为边长的一半，奇数最中间只有一个无需旋转。
+		for i in range(n // 2):
+			# 每一层按边长循环，依次交换四个角
+			for j in range(i, n - i - 1):
 				t = matrix[i][j]
-				matrix[i][j] = matrix[len(matrix) - 1 - j][i]
-				matrix[len(matrix) - 1 - j][i] = matrix[len(matrix) - 1 - i][len(matrix) - 1 - j]
-				matrix[len(matrix) - 1 - i][len(matrix) - 1 - j] = matrix[j][len(matrix) - 1 - i]
-				matrix[j][len(matrix) - 1 - i] = t
-			i += 1
+				matrix[i][j] = matrix[n - 1 - j][i]
+				matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j]
+				matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i]
+				matrix[j][n - 1 - i] = t
 
 
 def test(matrix):

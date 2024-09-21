@@ -1,15 +1,10 @@
-"""
-https://leetcode-cn.com/problems/two-sum/
-"""
-from typing import List
-
 from utils import benckmark
 
 
-# 虽然本地快了点，但在leetcode上还是56ms
+# 虽然本地快了点，但在 leetcode 上还是 56ms
 class Solution:
 
-	def twoSum(self, nums: List[int], target: int) -> List[int]:
+	def twoSum(self, nums: list[int], target: int):
 		"""
 		直接 key in dict 而不是 key in dict.keys()，耗时降低了 0.3 秒/百万次
 		使用 enumerate(nums) 代替 range(len(nums)))，耗时降低了 0.07 秒/百万次
