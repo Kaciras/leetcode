@@ -6,6 +6,10 @@ mod q32_longest_valid_parentheses;
 mod q12_integer_to_roman;
 mod q10_container_with_most_water;
 mod q3024_type_of_triangle;
+mod q35_search_insert_position;
+mod q10_regular_expression_matching;
+mod q278_first_bad_version;
+mod q16_3sum_closest;
 
 fn main() {
 
