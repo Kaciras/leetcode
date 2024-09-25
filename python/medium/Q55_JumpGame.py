@@ -1,20 +1,20 @@
 class Solution:
 
-	def canJump(self, nums):
+	def canJump(self, nums: list[int]):
 		if len(nums) < 2:
 			return True
-		first = len(nums) - 1 # 能够跳到终点的最前位置
 
+		# 能够跳到终点的最前位置，从末尾开始。
+		first = len(nums) - 1
+
+		# 某一点能跳到 N，那也包括 N 之前的。
 		for i in range(len(nums) - 1, -1, -1):
 			if i + nums[i] >= first:
 				first = i
+
 		return first == 0
 
-	def canJump_my(self, nums):
-		"""
-		:type nums: List[int]
-		:rtype: bool
-		"""
+	def canJump_1(self, nums: list[int]):
 		if len(nums) < 2:
 			return True
 

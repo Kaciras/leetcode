@@ -9,9 +9,9 @@ class Solution:
 			return n
 		# 上第一次和第二层的走法数量
 		a, b = 1, 2
-		# 从第二层开始递归
+		# 从第二层开始递归……
 		for _ in range(n - 2):
-			# 接下来是第二层和第三层，以此类推……
+			# 某层的走法为前一层 + 前两层。
 			a, b = b, a + b
 		return b
 

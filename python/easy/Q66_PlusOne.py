@@ -1,11 +1,7 @@
 class Solution:
 	"""代码最少的方法是转成整数再转字符串，但是那样太没意思了"""
 
-	def plusOne(self, digits):
-		"""
-		:type digits: List[int]
-		:rtype: List[int]
-		"""
+	def plusOne(self, digits: list[int]):
 		r, j = [], True
 		for i in range(len(digits) - 1, -1, -1):
 			if j:

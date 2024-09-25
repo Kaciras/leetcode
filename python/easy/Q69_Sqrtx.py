@@ -1,9 +1,6 @@
 class Solution:
-	def mySqrt(self, x):
-		"""
-		:type x: int
-		:rtype: int
-		"""
+	def mySqrt(self, x: int):
+		"""牛顿迭代法"""
 		if x == 0:
 			return 0
 		eps = 1e-12

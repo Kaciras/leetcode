@@ -1,19 +1,16 @@
 class Solution:
-	"""TODO 组合数"""
+	"""这题还可以直接用组合数算"""
 
-	def uniquePaths(self, m, n):
+	def uniquePaths(self, m: int, n: int):
+		"""DP，按行从上到下，下一行格子走法为前一行的同列+左边一格"""
 		paths = [1] * n
 		for i in range(1, m):
 			for j in range(1, n):
 				paths[j] = paths[j] + paths[j - 1]
 		return paths[-1]
 
-	def uniquePaths_0(self, m, n):
-		"""
-		:type m: int
-		:type n: int
-		:rtype: int
-		"""
+	def uniquePaths_1(self, m: int, n: int):
+		"""直接模拟，超时"""
 		visited = [[0] * m for _ in range(n)]
 
 		def find(x, y):

@@ -1,13 +1,14 @@
 from functools import cmp_to_key
-from typing import List
 
 
 class Solution:
+	"""做富文本编辑器的时候倒是写了类似的东西，合并选区"""
 
 	# 妈的玄学测速，这个答案竟然才超过 30% 运行时间
-	def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+	def merge(self, intervals: list[list[int]]):
 		if not intervals:
 			return []
+
 		intervals.sort(key=lambda x: x[0])
 		result = [intervals[0]]
 
@@ -21,7 +22,7 @@ class Solution:
 		return result
 
 	# 虽然原始的做法里，双属性排序是多余的，不过也学到了个 cmp_to_key 函数
-	def merge2(self, intervals: List[List[int]]) -> List[List[int]]:
+	def merge2(self, intervals: list[list[int]]):
 		if not intervals:
 			return []
 

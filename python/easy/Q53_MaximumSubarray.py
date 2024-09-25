@@ -1,10 +1,7 @@
-from typing import List
-
-
 class Solution:
 
-	def maxSubArray(self, nums: List[int]) -> int:
-		"""c是当前子序列的和，m是最大子序列的和"""
+	def maxSubArray(self, nums: list[int]):
+		"""c 是当前子序列的和，m 是最大子序列的和"""
 		c, m = 0, nums[0]
 		for n in nums:
 			c += n
