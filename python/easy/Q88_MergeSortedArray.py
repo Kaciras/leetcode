@@ -1,11 +1,8 @@
-from typing import List
-
-
 class Solution:
 
-	def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+	def merge(self, nums1: list[int], m: int, nums2: list[int], n: int):
 		"""
-		关键是反向遍历，因为nums1的后面有空，所以不会干扰到nums1前面的数
+		关键是反向遍历，因为 nums1 的后面有空，所以不会干扰到 nums1 前面的数
 		"""
 		m, n, total = m - 1, n - 1, m + n - 1
 		while m >= 0 and n >= 0:

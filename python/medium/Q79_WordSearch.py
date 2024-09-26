@@ -1,23 +1,18 @@
 class Solution:
-	def exist(self, board, word):
-		"""
-		:type board: List[List[str]]
-		:type word: str
-		:rtype: bool
-		"""
+	def exist(self, board: list[list[str]], word: str):
 		if not word:
 			return True
 
-		# 对于题目而言，也可以直接修改 board[i][j] = None 来屏蔽访问过的元素
+		# 也可以直接修改 board[i][j] = None 来屏蔽访问过的元素
 		visited = [[False] * len(board[0]) for _ in range(len(board))]
 
-		def find(i, j, sindex):
+		def find(i, j, s_index):
 			if visited[i][j]:
 				return False
-			if sindex == len(word):
+			if s_index == len(word):
 				return True
 			visited[i][j] = True
-			char, next_ = word[sindex], []
+			char, next_ = word[s_index], []
 
 			# 可以把范围的判断放到最前面
 			if i > 0: next_.append((i - 1, j))
@@ -26,7 +21,7 @@ class Solution:
 			if j < len(visited[0]) - 1: next_.append((i, j + 1))
 
 			for x, y in next_:
-				if board[x][y] == word[sindex] and find(x, y, sindex + 1):
+				if board[x][y] == word[s_index] and find(x, y, s_index + 1):
 					return True
 			visited[i][j] = False
 			return False
@@ -39,14 +34,14 @@ class Solution:
 
 
 if __name__ == '__main__':
-	board = [
+	board1 = [
 		['A', 'B', 'C', 'E'],
 		['S', 'F', 'C', 'S'],
 		['A', 'D', 'E', 'E']
 	]
-	print(Solution().exist(board, "ABCB"))
-	print(Solution().exist(board, ""))
-	print(Solution().exist(board, "ABCCED"))
-	print(Solution().exist(board, "SEE"))
+	print(Solution().exist(board1, "ABCB"))
+	print(Solution().exist(board1, ""))
+	print(Solution().exist(board1, "ABCCED"))
+	print(Solution().exist(board1, "SEE"))
 
 	print(Solution().exist([["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]], "ABCESEEEFS"))

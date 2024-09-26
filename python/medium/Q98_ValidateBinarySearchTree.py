@@ -2,17 +2,16 @@ from utils import TreeNode, binary_tree
 
 
 class Solution:
-	def isValidBST(self, root):
-		"""
-		:type root: TreeNode
-		:rtype: bool
-		"""
+
+	def isValidBST(self, root: TreeNode):
+
 		def check(node, min_, max_):
 			if not node:
 				return True
 			if node.val <= min_ or node.val >= max_:
 				return False
-			return check(node.left, min_, node.val) and check(node.right, node.val, max_)
+			return (check(node.left, min_, node.val) and
+			        check(node.right, node.val, max_))
 
 		return check(root, float("-inf"), float("inf"))
 

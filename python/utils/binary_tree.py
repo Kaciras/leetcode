@@ -17,15 +17,15 @@ class TreeNode[T]:
 		return str(self.val)
 
 
-def binary_tree(values: list) -> TreeNode:
+def binary_tree(values: list) -> Optional[TreeNode]:
 	"""
 	根据列表创建二叉树，是 LeetCode 的常见操作。
 
 	:param values: 节点值的列表,其中 None 值代表节点不存在
-	:return: 根节点
+	:return: 根节点，如果输入是空列表则返回 None
 	"""
 	if not values:
-		raise TypeError("二叉树的输入为空，会有这种情况吗？")
+		return None
 
 	root = TreeNode(values[0])
 	queue, leave = collections.deque(), collections.deque(values[1:])
