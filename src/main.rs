@@ -11,6 +11,7 @@ mod q10_regular_expression_matching;
 mod q278_first_bad_version;
 mod q16_3sum_closest;
 mod q45_jump_game_2;
+mod q224_basic_calculator;
 
 fn main() {
 
