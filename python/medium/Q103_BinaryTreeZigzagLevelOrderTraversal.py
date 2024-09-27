@@ -4,11 +4,7 @@ from utils import TreeNode, binary_tree
 class Solution:
 	"""此题直接 N % 2 == 0 判断还快些"""
 
-	def zigzagLevelOrder(self, root):
-		"""
-		:type root: TreeNode
-		:rtype: List[List[int]]
-		"""
+	def zigzagLevelOrder(self, root: TreeNode):
 		if not root:
 			return []
 

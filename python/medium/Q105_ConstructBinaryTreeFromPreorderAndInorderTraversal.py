@@ -1,4 +1,4 @@
-from utils import TreeNode, binary_tree
+from utils import TreeNode
 
 
 class Solution:
@@ -6,12 +6,7 @@ class Solution:
 	def __init__(self):
 		self.index = 0 # 利用[中序遍历左边元素数量 = 左子树节点总数]可以省掉这个计数的字段
 
-	def buildTree(self, preorder, inorder):
-		"""
-		:type preorder: List[int]
-		:type inorder: List[int]
-		:rtype: TreeNode
-		"""
+	def buildTree(self, preorder: list, inorder: list):
 		if not preorder:
 			return None
 

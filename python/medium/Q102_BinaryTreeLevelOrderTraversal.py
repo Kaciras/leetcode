@@ -2,11 +2,8 @@ from utils import TreeNode, binary_tree
 
 
 class Solution:
-	def levelOrder(self, root):
-		"""
-		:type root: TreeNode
-		:rtype: List[List[int]]
-		"""
+
+	def levelOrder(self, root: TreeNode):
 		result = []
 
 		def DLR(node, depth):

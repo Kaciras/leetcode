@@ -14,10 +14,12 @@ class Solution:
 			return not right
 		if not right:
 			return not left
-		return left.val == right.val and self.cmp(left.left, right.right) and self.cmp(left.right, right.left)
+		return (left.val == right.val and
+		        self.cmp(left.left, right.right) and
+		        self.cmp(left.right, right.left))
 
 
-	def isSymmetric2(self, root: TreeNode) -> bool:
+	def isSymmetric_1(self, root: TreeNode) -> bool:
 		"""
 		队列比递归慢了
 		"""
