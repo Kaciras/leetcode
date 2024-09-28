@@ -1,29 +1,49 @@
-from utils import TreeNode
+from utils import TreeNode, tree_to_list
 
 
 class Solution:
+	"""
+	思路是三个节点一组来看，通过中序遍历来确定前序的下一个的位置。
+	前序：[本节点，左，右]
+	中序：[左，本节点，右]
+	"""
 
-	def __init__(self):
-		self.index = 0 # 利用[中序遍历左边元素数量 = 左子树节点总数]可以省掉这个计数的字段
+	preorder: list
+	inorder: list
+	map: dict[TreeNode, int]
+	index = 0
 
 	def buildTree(self, preorder: list, inorder: list):
-		if not preorder:
+		self.preorder = preorder
+		self.inorder = inorder
+		self.map = {i: v for v, i in enumerate(inorder)}
+		return self.recursive(0, len(inorder))
+
+	def recursive(self, lo: int, hi: int):
+		if self.index == len(self.preorder):
 			return None
 
-		def build_node(lo, hi):
-			node = TreeNode(preorder[self.index])
-			self.index += 1
-			j = inorder.index(node.val, lo, hi) # 有些解法生成字典加快这步，但这会增大空间复杂度
+		val = self.preorder[self.index]
+		node, k = TreeNode(val), self.map[val]
 
-			if self.index < len(preorder) and preorder[self.index] in inorder[lo:j]:
-				node.left = build_node(lo, j)
-			if self.index < len(preorder) and preorder[self.index] in inorder[j + 1:hi]:
-				node.right = build_node(j + 1, hi)
-			return node
+		# 按前序遍历顺序扫描，中序定位。
+		self.index += 1
 
-		return build_node(0, len(preorder))
+		# 中序列表里，该节点左侧有元素，说明前序的接下来是左节点
+		if k > lo:
+			node.left = self.recursive(lo, k)
+
+		# 中序列表里，该节点右侧有元素，说明前序的接下来是右节点
+		if k < hi - 1:
+			node.right = self.recursive(k + 1, hi)
+
+		return node
 
 
 if __name__ == '__main__':
-	x = Solution().buildTree([1, 2, 4, 6, 5, 7, 8, 3, 9], [4, 6, 2, 7, 5, 8, 1, 9, 3])
 	x = Solution().buildTree([3, 9, 20, 15, 7], [9, 3, 15, 20, 7])
+	print(tree_to_list(x))
+	x = Solution().buildTree([-1], [-1])
+	print(tree_to_list(x))
+	x = Solution().buildTree([1, 2, 4, 6, 5, 7, 8, 3, 9], [4, 6, 2, 7, 5, 8, 1, 9, 3])
+	print(tree_to_list(x))

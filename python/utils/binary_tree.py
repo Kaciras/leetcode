@@ -1,4 +1,6 @@
 import collections
+import math
+from collections import deque
 from typing import Optional
 
 
@@ -49,5 +51,20 @@ def binary_tree(values: list) -> Optional[TreeNode]:
 	return root
 
 
-def print_binary_tree(node):
-	pass
+def tree_to_list(root: TreeNode):
+	"""跟 LeetCode 一样的树转列表，分层遍历"""
+	queue, output = deque(), []
+	queue.append(root)
+
+	while queue:
+		node = queue.popleft()
+		if not node:
+			output.append(None)
+			continue
+		output.append(node.val)
+		queue.append(node.left)
+		queue.append(node.right)
+
+	# 最后会多一层全空，这里计算深度来去除。
+	depth = int(math.log2(len(output)))
+	return output[:2 ** depth - 1]
