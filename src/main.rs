@@ -1,3 +1,7 @@
+#![allow(unused)]
+
+mod linked_list;
+
 mod q6_zigzag_conversion;
 mod q9_palindrome_number;
 mod q27_remove_elements;
@@ -13,7 +17,10 @@ mod q16_3sum_closest;
 mod q45_jump_game_2;
 mod q224_basic_calculator;
 mod q168_excel_sheet_column_title;
-mod linked_list;
+mod q24_swap_nodes_in_pairs;
+mod q119_pascal_triangle_2;
+mod q120_triangle;
+mod q42_trapping_rain_water;
 
 fn main() {
 
