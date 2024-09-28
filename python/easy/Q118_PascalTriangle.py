@@ -1,12 +1,10 @@
-from typing import List
-
 from utils import benckmark
 
 
 class Solution:
-	"""保存prev为局部变量，耗时降低了0.9秒/百万次"""
+	"""保存 prev 为局部变量，耗时降低了0.9秒/百万次"""
 
-	def generate(self, numRows: int) -> List[List[int]]:
+	def generate(self, numRows: int):
 		result = [[1]]
 		for i in range(1, numRows):
 			row, prev = [1], result[i - 1]

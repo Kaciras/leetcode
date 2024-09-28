@@ -1,9 +1,6 @@
-from typing import List
-
-
 class Solution:
 
-	def maxProfit(self, prices: List[int]) -> int:
+	def maxProfit(self, prices: list[int]) -> int:
 		"""
 		在一天之内能卖了再买的情况下，利润就是前面大的减小的。
 		即使卖出后出现更大的，也可以立即买回，所以直接加就完事。
@@ -15,7 +12,7 @@ class Solution:
 				result += profit
 		return result
 
-	def maxProfit_dp(self, prices: List[int]) -> int:
+	def maxProfit_dp(self, prices: list[int]) -> int:
 		"""
 		每天只能操作一次的情况下是一个动态规划问题
 		"""

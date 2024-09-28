@@ -4,7 +4,7 @@ from utils import benckmark
 
 
 class Solution:
-	"""float(inf)改成0x7FFFFFFF，耗时降低0.2秒/百万次"""
+	"""float(inf) 改成 0x7FFFFFFF，耗时降低 0.2s/Mops"""
 
 	def maxProfit(self, prices: List[int]) -> int:
 		buy, r = 0x7FFFFFFF, 0
