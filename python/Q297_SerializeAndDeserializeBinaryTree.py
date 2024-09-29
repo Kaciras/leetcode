@@ -1,6 +1,8 @@
-from utils import TreeNode, binary_tree
-from collections import deque
 import ast
+from collections import deque
+
+from utils import TreeNode, binary_tree
+
 
 class Codec:
 

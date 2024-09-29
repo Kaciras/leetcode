@@ -1,4 +1,4 @@
-from ..utils import ListNode
+from utils import ListNode
 
 
 class Solution:
