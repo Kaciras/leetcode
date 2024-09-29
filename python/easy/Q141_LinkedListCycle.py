@@ -3,7 +3,7 @@ from utils import ListNode, print_linked_list
 
 class Solution:
 
-	def hasCycle(self, head: ListNode) -> bool:
+	def hasCycle(self, head: ListNode):
 		slow = fast = head
 		while fast:
 			slow, fast = slow.next, fast.next

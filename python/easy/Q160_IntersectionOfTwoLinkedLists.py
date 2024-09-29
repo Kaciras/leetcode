@@ -2,7 +2,6 @@ from utils import linked_list, benckmark
 
 
 class Solution:
-	"""这题没有Py3，不能在参数上定义类型"""
 
 	def getIntersectionNode(self, ha, hb):
 		"""

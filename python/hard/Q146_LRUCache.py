@@ -1,5 +1,5 @@
 """
-如果是生产环境，用Python自带的OrderedDict即可实现。
+如果是生产环境，用 Python 自带的 OrderedDict 即可实现。
 原理是把字典和双向链表结合起来，每次获取时将节点挪到最前，淘汰最后的节点。
 """
 class ListNode:

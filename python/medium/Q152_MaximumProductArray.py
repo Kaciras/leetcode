@@ -1,10 +1,10 @@
 class Solution:
 	"""
 	乘积最大子序列
-	https://leetcode-cn.com/explore/interview/card/top-interview-questions-hard/60/dynamic-programming/154/
+	https://leetcode-cn.com/explore/interview/card/top-interview-questions-hard/60/dynamic-programming/154
 	"""
 
-	def maxProduct(self, nums):
+	def maxProduct(self, nums: list[int]):
 		"""
 		该解法的关键是认识到存在负数时，最小值可能由负负得正变为最大值。
 		所以不仅要记录最大，还要记录最小
@@ -26,7 +26,7 @@ class Solution:
 
 	def force(self, nums):
 		"""
-		暴力搜索，时间O(n^2)，可能会超时
+		暴力搜索，时间 O(n^2)，可能会超时
 		"""
 		maxp = nums[0]
 		for i in range(len(nums)):

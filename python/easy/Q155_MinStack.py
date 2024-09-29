@@ -1,5 +1,5 @@
 class MinStack:
-	"""用stack里的值与最小值的差来记录上次最小值"""
+	"""用 stack 里的值与最小值的差来记录上次最小值"""
 
 	def __init__(self):
 		self.stack = []
@@ -14,9 +14,9 @@ class MinStack:
 			if x < self.mininum:
 				self.mininum = x
 
-	def pop(self) -> int:
+	def pop(self):
 		if not self.stack:
-			return self.mininum
+			return
 		v = self.stack.pop()
 		if v < 0:
 			self.mininum -= v
