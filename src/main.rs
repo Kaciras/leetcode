@@ -22,6 +22,7 @@ mod q119_pascal_triangle_2;
 mod q120_triangle;
 mod q42_trapping_rain_water;
 mod q58_length_of_last_word;
+mod q202_happy_number;
 
 fn main() {
 
