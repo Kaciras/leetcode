@@ -1,9 +1,6 @@
-from typing import List
-
-
 class Solution:
 
-	def rotate(self, nums: List[int], k: int) -> None:
+	def rotate(self, nums: list[int], k: int) -> None:
 		"""三次翻转法，分别翻转被移动的部分、剩下的部分，最后再整个翻转一下"""
 		k = len(nums) - k % len(nums)
 		nums[::-1] = nums[k - 1::-1] + nums[:k - 1:-1]

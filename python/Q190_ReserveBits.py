@@ -1,13 +1,13 @@
 class Solution:
 
-	def reverseBits(self, n):
+	def reverseBits(self, n: int):
 		"""转成二进制的字符串来翻转"""
 		b = bin(n)[2:]
 		b = "0" * (32 - len(b)) + b
 		return int(b[::-1], 2)
 
-	def reverseBits_2(self, n):
-		"""不依赖任何语言特性的实现"""
+	def reverseBits_2(self, n: int):
+		"""不依赖任何语言特性的实现，想起当年的《编程珠玑》了"""
 		n = (n & 0xAAAAAAAA) >> 1 | (n & 0x55555555) << 1
 		n = (n & 0xCCCCCCCC) >> 2 | (n & 0x33333333) << 2
 		n = (n & 0xF0F0F0F0) >> 4 | (n & 0x0F0F0F0F) << 4

@@ -1,11 +1,10 @@
-class Solution(object):
-	"""这题没有PY3，不能加类型定义"""
+class Solution:
 
-	def hammingWeight(self, n):
+	def hammingWeight(self, n: int):
 		"""Python 自带一个直接转二进制字符串的函数"""
 		return bin(n).count("1")
 
-	def hammingWeight2(self, n):
+	def hammingWeight2(self, n: int):
 		count = 0
 		while n > 0:
 			if n & 1 == 1:

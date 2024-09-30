@@ -1,15 +1,12 @@
 class Solution:
 	"""divmod() 同时计算商和余数"""
 
-	def fractionToDecimal(self, num, den):
-		"""
-		:type num: int
-		:type den: int
-		:rtype: str
-		"""
+	def fractionToDecimal(self, num: int, den: int):
 		negative = (num < 0) ^ (den < 0)
-		result, num = divmod(abs(num), abs(den))
+		num, den = abs(num), abs(den)
+
 		decimal, visited, i = "", dict(), 0
+		result, num = divmod(num, den)
 
 		while num != 0:
 			if num in visited.keys():
@@ -29,6 +26,7 @@ class Solution:
 		return result
 
 if __name__ == '__main__':
+	print(Solution().fractionToDecimal(7, -12))
 	print(Solution().fractionToDecimal(-50, 8))
 	print(Solution().fractionToDecimal(-1, 7))
 	print(Solution().fractionToDecimal(0, -1))

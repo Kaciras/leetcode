@@ -1,9 +1,6 @@
-from typing import List
-
-
 class Solution:
 
-	def rob(self, nums: List[int]) -> int:
+	def rob(self, nums: list[int]):
 		"""最大收益 = max(前第二个偷了的 + 这次收益，前一个的收益)"""
 		if len(nums) == 0:
 			return 0
