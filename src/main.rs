@@ -29,26 +29,30 @@ mod q202_happy_number;
 mod q169_majority_element;
 mod q274_h_index;
 
-/// 检查有无做重复的题，以及 Python 里
+/// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
 	let mut answers = [false; 65536];
 	for path in fs::read_dir("src").unwrap() {
 		let name = path.unwrap().file_name();
 		let name = name.to_str().unwrap();
+
 		let prefix = name.bytes().next().unwrap();
 		if prefix != b'Q' && prefix != b'q' {
 			continue;
 		}
-		let sep = name.find("_");
-		if sep == None {
-			continue;
+		let id = name.find("_")
+			.map(|i| &name[1..i])
+			.map(|s| usize::from_str_radix(s, 10).ok())
+			.flatten();
+
+		if id != None {
+			let id = id.unwrap();
+			if !answers[id] {
+				answers[id] = true;
+			} else {
+				println!("Found duplecated answers for {}", id);
+			}
 		}
-		let num=&name[1..sep.unwrap()];
-		let id = usize::from_str_radix(num,10).unwrap();
-		if answers[id] {
-			println!("Found duplecated answers for {}", id);
-		}
-		answers[id] = true;
 	}
 }
 
