@@ -23,7 +23,7 @@ class Solution:
 
 		return True
 
-	def isPalindrome2(self, head: ListNode) -> bool:
+	def isPalindrome_1(self, head: ListNode) -> bool:
 		"""计数法找中间的节点，效率不高"""
 		size, node = 0, head
 		while node:

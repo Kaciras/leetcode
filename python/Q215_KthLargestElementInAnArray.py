@@ -2,12 +2,9 @@ import heapq
 
 
 class Solution:
-	def findKthLargest(self, nums, k):
-		"""
-		:type nums: List[int]
-		:type k: int
-		:rtype: int
-		"""
+	"""正常做的话是搞堆结构"""
+
+	def findKthLargest(self, nums: list[int], k: int):
 		return heapq.nlargest(k, nums)[-1]
 
 

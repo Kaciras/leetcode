@@ -1,12 +1,9 @@
 class Solution:
-	def numIslands(self, grid):
-		"""
-		:type grid: List[List[str]]
-		:rtype: int
-		"""
+	def numIslands(self, grid: list[list[str]]) -> int:
+		"""每找到一个就把连着的所有全部设为空"""
 		count = 0
 
-		def fill(x, y):
+		def empty_island_dfs(x, y):
 			queue = [(x, y)]
 			while queue:
 				x, y = queue.pop()
@@ -24,8 +21,8 @@ class Solution:
 		for i in range(len(grid)):
 			for j in range(len(grid[0])):
 				if grid[i][j] == "1":
-					fill(i, j)
 					count += 1
+					empty_island_dfs(i, j)
 
 		return count
 

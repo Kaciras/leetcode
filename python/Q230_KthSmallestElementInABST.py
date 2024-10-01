@@ -1,26 +1,28 @@
+from typing import Optional
+
 from utils import TreeNode, binary_tree
 
 
 class Solution:
-	def kthSmallest(self, root, k):
-		"""
-		:type root: TreeNode
-		:type k: int
-		:rtype: int
-		"""
+	"""BST 中序遍历就是从小到大，计数到第 N 个即可"""
+
+	remain: int
+	result: Optional[int]
+
+	def kthSmallest(self, root: TreeNode, k: int):
 		self.remain = k
 		self.result = None
-
-		def LDR(node):
-			if self.remain > 0 and node:
-				LDR(node.left)
-				self.remain -= 1
-				if self.remain == 0:
-					self.result = node.val
-				LDR(node.right)
-
-		LDR(root)
+		self.LDR(root)
 		return self.result
+
+	def LDR(self, node):
+		if self.remain == 0 or node is None:
+			return
+		self.LDR(node.left)
+		self.remain -= 1
+		if self.remain == 0:
+			self.result = node.val
+		self.LDR(node.right)
 
 
 if __name__ == '__main__':

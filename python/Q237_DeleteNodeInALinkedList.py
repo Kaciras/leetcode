@@ -1,6 +1,7 @@
 from utils import linked_list, ListNode, print_linked_list
 
 class Solution:
+	"""这题竟然是 Medium"""
 
 	def deleteNode(self, node: ListNode) -> None:
 		node.val = node.next.val
