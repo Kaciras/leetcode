@@ -6,14 +6,9 @@ from utils import TreeNode, binary_tree
 
 class Codec:
 
-	def serialize(self, root):
-		"""Encodes a tree to a single string.
-
-		:type root: TreeNode
-		:rtype: str
-		"""
+	def serialize(self, root: TreeNode):
 		if not root:
-			return []
+			return "[]"
 		queue, result, end = deque([root]), [], 0
 		while queue:
 			node = queue.popleft()
@@ -26,16 +21,12 @@ class Codec:
 
 		return str(result[:end])
 
-	def deserialize(self, data):
-		"""Decodes your encoded data to tree.
+	def deserialize(self, data: str):
+		data = ast.literal_eval(data.replace("null", "None"))
 
-		:type data: str
-		:rtype: TreeNode
-		"""
 		if not data:
 			return None
 
-		data = ast.literal_eval(data.replace("null", "None"))
 		root, queue, leave = TreeNode(data[0]), deque(), deque(data[1:])
 		queue.append(root)
 
@@ -60,9 +51,11 @@ class Codec:
 		return root
 
 
-tree = binary_tree([5, 4, 7, 3, None, 2, None, -1, None, 9])
-codec = Codec()
-x = codec.serialize(tree)
-print(x)
-r = codec.deserialize(x)
-print(r)
+if __name__ == '__main__':
+	tree = binary_tree([5, 4, 7, 3, None, 2, None, -1, None, 9])
+	codec = Codec()
+	x = codec.serialize(tree)
+	print(x)
+	print(codec.deserialize(x))
+
+	print(codec.deserialize("[]"))

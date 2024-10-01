@@ -34,7 +34,12 @@ mod q279_perfect_squares;
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
 	let mut answers = [false; 65536];
-	for path in fs::read_dir("src").unwrap() {
+	check_folder(&mut answers, "src");
+	check_folder(&mut answers, "python");
+}
+
+fn check_folder(answers: &mut [bool], folder: &str) {
+	for path in fs::read_dir(folder).unwrap() {
 		let name = path.unwrap().file_name();
 		let name = name.to_str().unwrap();
 

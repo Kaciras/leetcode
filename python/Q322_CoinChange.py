@@ -1,11 +1,11 @@
 class Solution:
 
-	def coinChange(self, coins, amount):
+	def coinChange(self, coins: list[int], amount: int):
 		"""
-		动态规划问题常用的填坑法，下标代表能组合出的数（不能组合的
-		为INF），数组值代表组合出此数的最少步骤
+		动态规划问题常用的填坑法，下标代表能组合出的数（不能组合的为INF），
+		数组值代表组合出此数的最少步骤
 
-		这题改用其他语言做了，Python死活超时......
+		这题改用其他语言做了，Python 死活超时......
 		"""
 		dp = [0x7FFFFFFE] * (amount + 1)
 		dp[0] = 0
@@ -17,13 +17,9 @@ class Solution:
 
 		return dp[amount] if dp[amount] != 0x7FFFFFFE else -1
 
-	def coinChange_0(self, coins, amount):
+	def coinChange_0(self, coins: list[int], amount: int):
 		"""
-		最开始的想法，按照人的思维，先上大的，不行从上一个继续尝试小的，可惜
-		超时了。
-		:type coins: List[int]
-		:type amount: int
-		:rtype: int
+		最开始的想法，按照人的思维，先上大的，不行从上一个继续尝试小的，可惜超时了。
 		"""
 		coins.sort(reverse=True)
 		count = 0x7FFFFFFF

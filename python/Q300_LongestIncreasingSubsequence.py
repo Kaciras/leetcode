@@ -1,7 +1,8 @@
 class Solution:
+	"""不能陷入惯性思维，认为必须找到这个子序列，其实只需要长度相等即可"""
 
-	def lengthOfLIS(self, nums):
-		"""此题关键不能陷入惯性思维，认为必须找到这个子序列，其实只需要长度相等即可"""
+	def lengthOfLIS(self, nums: list[int]):
+		"""因为子序列是有序的，所以可以在对比时二分"""
 		if len(nums) < 2:
 			return len(nums)
 
@@ -24,11 +25,7 @@ class Solution:
 
 		return len(sub)
 
-	def lengthOfLIS_0(self, nums):
-		"""
-		:type nums: List[int]
-		:rtype: int
-		"""
+	def lengthOfLIS_1(self, nums: list[int]):
 		if not nums:
 			return 0
 		length = [1] * len(nums)
