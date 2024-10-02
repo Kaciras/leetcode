@@ -30,6 +30,7 @@ mod q169_majority_element;
 mod q274_h_index;
 mod q275_h_index_2;
 mod q279_perfect_squares;
+mod q238_product_of_array_except_self;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
