@@ -1,5 +1,22 @@
 class Solution:
 
+	def increasingTriplet(self, nums: list[int]):
+		"""
+		三个连续递增是有限状态，搞俩变量完事。
+		这里的关键在于一旦 second 赋值即表明已有两个递增。
+		"""
+		if len(nums) < 3:
+			return False
+		first = second = float('inf')
+		for n in nums:
+			if n <= first:
+				first = n
+			elif n <= second:
+				second = n
+			else:
+				return True
+		return False
+
 	def increasingN(self, nums, n):
 		if n < 2:
 			raise ValueError()
@@ -17,14 +34,12 @@ class Solution:
 				return True
 		return False
 
-	def increasingTriplet(self, nums):
+	def increasingTriplet_2(self, nums: list[int]):
 		return self.increasingN(nums, 3)
 
-	def increasingTriplet_old(self, nums):
+	def increasingTriplet_1(self, nums: list[int]):
 		"""
 		这个其实等价于increasingN，只是分成俩数组搞复杂了
-		:type nums: List[int]
-		:rtype: bool
 		"""
 		if len(nums) < 3:
 			return False
@@ -53,10 +68,10 @@ class Solution:
 
 
 if __name__ == '__main__':
-	print(Solution().increasingTriplet([5, 1, 5, 5, 2, 5, 4]))
-	print(Solution().increasingTriplet([2, 5, 3, 4, 5]))
-	print(Solution().increasingTriplet([3, 4, 1, 5]))
-	print(Solution().increasingTriplet([6, 9, 1, 2, 7]))
+	assert Solution().increasingTriplet([5, 1, 5, 5, 2, 5, 4]) == True
+	assert Solution().increasingTriplet([2, 5, 3, 4, 5]) == True
+	assert Solution().increasingTriplet([3, 4, 1, 5]) == True
+	assert Solution().increasingTriplet([6, 9, 1, 2, 7]) == True
 
-	print(Solution().increasingTriplet([5, 4, 3, 2, 1]))
-	print(Solution().increasingTriplet([2,4,-2,-3]))
+	assert Solution().increasingTriplet([2, 4, -2, -3]) == False
+	assert Solution().increasingTriplet([5, 4, 3, 2, 1]) == False

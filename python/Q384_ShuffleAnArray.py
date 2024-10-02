@@ -1,33 +1,27 @@
-import random
+from random import randint
 
 
 class Solution:
-	"""也可以保存两个数组来避免每次都复制一份"""
+	"""保存两个数组来避免每次都复制一份"""
 
-	def __init__(self, nums):
-		"""
-		:type nums: List[int]
-		"""
+	def __init__(self, nums: list[int]):
 		self.nums = nums
+		self.output = nums.copy()
 
 	def reset(self):
-		"""
-		Resets the array to its original configuration and return it.
-		:rtype: List[int]
-		"""
 		return self.nums
 
 	def shuffle(self):
-		"""
-		Returns a random shuffling of the array.
-		:rtype: List[int]
-		"""
-		r = self.nums.copy()
-		for i in range(len(r) - 1, 0, -1):
-			j = random.randint(0, i)
-			r[i], r[j] = r[j], r[i]
-		return r
+		"""最简单的 Fisher–Yates 算法"""
+		c = self.output
+		for i in range(len(c) - 1, 0, -1):
+			j = randint(0, i)
+			c[i], c[j] = c[j], c[i]
+		return self.output
 
 
 if __name__ == '__main__':
-	Solution([1, 2, 3]).shuffle()
+	sln = Solution([1, 2, 3])
+	print(sln.shuffle())
+	print(sln.reset())
+	print(sln.shuffle())

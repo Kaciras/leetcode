@@ -3,25 +3,24 @@ import collections
 
 class Solution:
 
-	def leastInterval(self, tasks, n):
+	def leastInterval(self, tasks: list[str], n: int):
 		"""把它看做重排一个队列，相同元素之间最小间隔 n"""
-		ctr = collections.Counter(tasks)
-		most = num_most = 0
+		counter = collections.Counter(tasks)
 
-		for cnt in ctr.values():
+		# 统计出最长的类，以及有几个同样是最长的。
+		most = num_most = 0
+		for cnt in counter.values():
 			if cnt > most:
 				most, num_most = cnt, 1
 			elif cnt == most:
 				num_most += 1
 
+		# 有两种情况，选择次数最多的：
+		# 1）最长的几个执行时中间休息的空隙能跑完其它的，结果用最长的乘间隔。
+		# 1）中间的空隙跑不完其它的，那时间就是任务数量。
 		return max((most - 1) * (n + 1) + num_most, len(tasks))
 
-	def leastInterval_0(self, tasks, n):
-		"""
-		:type tasks: List[str]
-		:type n: int
-		:rtype: int
-		"""
+	def leastInterval_1(self, tasks: list[str], n: int):
 		if n == 0:
 			return len(tasks)
 		ctr = collections.Counter(tasks)

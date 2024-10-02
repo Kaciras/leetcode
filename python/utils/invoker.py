@@ -13,17 +13,21 @@ def serial_call(ops, arglist, module=sys.modules["__main__"]):
 	:param ops: 操作列表
 	:param arglist: 参数列表
 	:param module: 模块
-	:return: 迭代器，包含每一次调用的返回值
 	"""
 	obj = getattr(module, ops[0])(*arglist[0])
+
+	# 首个调用总是创建对象
+	return_values = [None]
 
 	for i in range(1, len(ops)):
 		op, args = ops[i], arglist[i]
 		try:
-			yield getattr(obj, op)(*args)
+			return_values.append(getattr(obj, op)(*args))
 		except:
 			print(f"第{i}个操作：{op} 出错，参数：{args}", file=sys.stderr)
 			raise
+
+	print(return_values)
 
 
 def benckmark(function: Callable, *args, ratio=1):

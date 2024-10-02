@@ -3,13 +3,10 @@ import heapq
 
 
 class Solution:
-	def topKFrequent(self, nums, k):
+	def topKFrequent(self, nums: list[int], k: int):
 		"""
-		Counter()时间复杂度 O(n)，most_common()复杂度 O(nlogn)
-		二分堆求TOP(K)复杂度 O(nlogk)
-		:type nums: List[int]
-		:type k: int
-		:rtype: List[int]
+		Counter() 时间复杂度 O(n)，most_common() 复杂度 O(nlogn)
+		二分堆求 TOP-K 复杂度 O(nlogk)
 		"""
 		ctr = collections.Counter(nums)
 		return heapq.nlargest(k, ctr, key=lambda x: ctr[x])

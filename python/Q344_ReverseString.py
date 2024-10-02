@@ -1,13 +1,10 @@
-from typing import List
-
-
 class Solution:
 
-	def reverseString(self, s: List[str]) -> None:
+	def reverseString(self, s: list[str]) -> None:
 		s.reverse()  # 标准库的API有这个方法
 		# s[::] = s[::-1] # Python 自带的语法也能直接搞定
 
-	def reverseString2(self, s: List[str]) -> None:
+	def reverseString2(self, s: list[str]) -> None:
 		i, j = 0, len(s) - 1
 		while i < j:
 			s[i], s[j] = s[j], s[i]

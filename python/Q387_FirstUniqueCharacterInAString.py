@@ -8,7 +8,7 @@ class Solution:
 		i = [s.index(label) for label in lowercase if s.count(label) == 1]
 		return min(i) if len(i) else -1
 
-	def firstUniqChar2(self, s: str) -> int:
+	def firstUniqChar_1(self, s: str) -> int:
 		d, r, f = {}, float("inf"), False
 		for i in range(len(s)):
 			ch = s[i]

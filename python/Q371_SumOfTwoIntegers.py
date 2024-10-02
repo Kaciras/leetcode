@@ -1,5 +1,5 @@
 class Solution:
-	"""乘除运算和sum()函数底层也使用了加减法，故不应使用"""
+	"""乘除运算和 sum() 函数底层也使用了加减法，故不应使用"""
 
 	def getSum(self, a: int, b: int) -> int:
 		"""纯位运算实现"""
@@ -16,10 +16,11 @@ class Solution:
 			sum_ |= (c & 1) << i # 符号位
 			return sum_ & 0xFFFFFFFF
 
-		# Python 的整数只有long，需要手动实现溢出
+		# Python 的整数只有 long，需要手动实现溢出
 		r = add(a, b)
 		if r > 0x7FFFFFFF:
 			r = -add(r ^ 0xFFFFFFFF, 1)
+
 		return r
 
 

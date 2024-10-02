@@ -1,6 +1,6 @@
 class Solution:
 
-	def hammingDistance(self, x: int, y: int) -> int:
+	def hammingDistance(self, x: int, y: int):
 		return bin(x ^ y).count("1")
 
 
