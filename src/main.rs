@@ -33,6 +33,8 @@ mod q279_perfect_squares;
 mod q238_product_of_array_except_self;
 mod q383_ransom_note;
 mod q205_isomorphic_strings;
+mod q228_summary_ranges;
+mod q203_remove_linked_list_elements;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
