@@ -1,8 +1,6 @@
 from leetcode_sql_checker import set_solution, check
 
-set_solution("""
-SELECT product_id FROM Products WHERE low_fats='Y' AND recyclable='Y';
-""")
+set_solution("SELECT product_id FROM Products WHERE low_fats='Y' AND recyclable='Y'")
 
 schema = """\
 Create table If Not Exists Products (product_id int, low_fats ENUM('Y', 'N'), recyclable ENUM('Y','N'));
