@@ -1,7 +1,11 @@
 import os
+from io import StringIO
 
 import dotenv
 import mariadb
+from rich.box import ASCII2
+from rich.console import Console
+from rich.table import Table
 
 dotenv.load_dotenv()
 
@@ -21,12 +25,6 @@ def set_solution(sql: str):
 	_solution_sql = sql
 
 
-def check(schema: str, rows):
-	with connection.cursor() as cursor:
-		_execute_script(cursor, schema)
-		cursor.execute(_solution_sql)
-		assert cursor.fetchall() == rows
-
 
 def _execute_script(cursor: mariadb.Cursor, script: str):
 	"""
@@ -40,3 +38,38 @@ def _execute_script(cursor: mariadb.Cursor, script: str):
 		if statement.startswith("--"):
 			continue
 		cursor.execute(statement)
+
+
+def _sql_table(cursor: mariadb.Cursor):
+	table = Table(box=ASCII2)
+	for column in cursor.description:
+		table.add_column(column[0])
+	for row in cursor:
+		table.add_row(*map(str, row))
+
+	console = Console(file=StringIO(), width=120)
+	console.print(table)
+	return console.file.getvalue()
+
+
+import functools
+import inspect
+
+
+def define_answer(sql: str):
+	def sql_test(schema: str):
+		def decorator(func):
+			@functools.wraps(func)
+			def template():
+				expected = inspect.cleandoc(func.__doc__)
+				with connection.cursor() as cursor:
+					_execute_script(cursor, schema)
+					cursor.execute(sql)
+					actual = _sql_table(cursor)
+					assert actual == expected + "\n"
+
+			return template
+
+		return decorator
+
+	return sql_test
