@@ -91,20 +91,6 @@ class LRUCache:
 		return node
 
 
-def test_example():
-	# Your LRUCache object will be instantiated and called as such:
-	cache = LRUCache(2)
-	cache.put(1, 1)
-	cache.put(2, 2)
-	cache.get(1)  # 返回  1
-	cache.put(3, 3)  # 该操作会使得密钥 2 作废
-	cache.get(2)  # 返回 -1 (未找到)
-	cache.put(4, 4)  # 该操作会使得密钥 1 作废
-	cache.get(1)  # 返回 -1 (未找到)
-	cache.get(3)  # 返回  3
-	cache.get(4)  # 返回  4
-
-
 if __name__ == '__main__':
 	invoker.serial_call(
 		["LRUCache", "put", "put", "put", "put", "put", "get", "put", "get", "get", "put", "get",

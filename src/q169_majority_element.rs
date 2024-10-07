@@ -1,6 +1,6 @@
 pub struct Solution {}
 
-// 主要数的数量大于一般，故减去其它的数量一定为正。
+// 主要数的数量大于一半，故减去其它的数量一定为正。
 impl Solution {
 	pub fn majority_element(nums: Vec<i32>) -> i32 {
 		let mut result = 0;

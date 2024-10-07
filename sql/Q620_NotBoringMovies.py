@@ -2,6 +2,8 @@ from leetcode_sql_checker import define
 
 sql_test = define("SELECT * FROM cinema WHERE id % 2 = 1 AND description != 'boring' ORDER BY rating DESC")
 
+sql_test.check_order = True
+
 @sql_test("""\
 	Create table If Not Exists cinema (id int, movie varchar(255), description varchar(255), rating float(2, 1));
 	Truncate table cinema;
