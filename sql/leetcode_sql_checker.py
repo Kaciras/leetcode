@@ -1,11 +1,8 @@
 import os
-from io import StringIO
 
 import dotenv
 import mariadb
-from rich.box import ASCII2
-from rich.console import Console
-from rich.table import Table
+from pytest_unordered import unordered
 
 dotenv.load_dotenv()
 
@@ -25,7 +22,6 @@ def set_solution(sql: str):
 	_solution_sql = sql
 
 
-
 def _execute_script(cursor: mariadb.Cursor, script: str):
 	"""
 	MariaDB 的连接库不支持一次执行多条语句，所以得自己分割下。
@@ -40,23 +36,25 @@ def _execute_script(cursor: mariadb.Cursor, script: str):
 		cursor.execute(statement)
 
 
-def _sql_table(cursor: mariadb.Cursor):
-	table = Table(box=ASCII2)
-	for column in cursor.description:
-		table.add_column(column[0])
-	for row in cursor:
-		table.add_row(*map(str, row))
+def _parse_ascii_table(table: str):
+	lines = table.splitlines()
+	columns = _parse_ascii_line(lines[1])
+	data = []
+	for line in lines[3:-1]:
+		data.append(_parse_ascii_line(line))
 
-	console = Console(file=StringIO(), width=120)
-	console.print(table)
-	return console.file.getvalue()
+	return columns, data
+
+
+def _parse_ascii_line(line: str):
+	return tuple(cell.strip() for cell in line.split("|")[1:-1])
 
 
 import functools
 import inspect
 
 
-def define_answer(sql: str):
+def define_answer(sql: str, check_order=False):
 	def sql_test(schema: str):
 		def decorator(func):
 			@functools.wraps(func)
@@ -65,8 +63,18 @@ def define_answer(sql: str):
 				with connection.cursor() as cursor:
 					_execute_script(cursor, schema)
 					cursor.execute(sql)
-					actual = _sql_table(cursor)
-					assert actual == expected + "\n"
+					h, b = _parse_ascii_table(expected)
+					x = tuple(x[0] for x in cursor.description)
+					assert x == h
+
+					result = []
+					for row in cursor:
+						result.append(tuple(str(x) for x in row))
+
+					if check_order:
+						assert result == b
+					else:
+						assert result == unordered(b)
 
 			return template
 

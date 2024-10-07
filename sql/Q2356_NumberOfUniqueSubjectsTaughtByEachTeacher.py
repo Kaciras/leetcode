@@ -1,8 +1,3 @@
-import pytest
-
-# we want to have pytest assert introspection in the helpers
-pytest.register_assert_rewrite('leetcode_sql_checker')
-
 from leetcode_sql_checker import define_answer
 
 sql_test = define_answer("""
@@ -21,7 +16,7 @@ SELECT teacher_id, count(distinct subject_id) as cnt FROM Teacher GROUP BY teach
 	insert into Teacher (teacher_id, subject_id, dept_id) values ('2', '4', '1');
 """)
 def test_example():
-	"""\
+	"""
 	+------------+-----+
 	| teacher_id | cnt |
 	+------------+-----+
