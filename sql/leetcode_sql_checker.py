@@ -1,3 +1,5 @@
+import functools
+import inspect
 import os
 
 import dotenv
@@ -13,14 +15,6 @@ connection = mariadb.connect(
 	user=os.getenv("MARIADB_USER"),
 	password=os.getenv("MARIADB_PASSWORD"),
 )
-
-_solution_sql: str
-
-
-def set_solution(sql: str):
-	global _solution_sql
-	_solution_sql = sql
-
 
 def _execute_script(cursor: mariadb.Cursor, script: str):
 	"""
@@ -50,11 +44,7 @@ def _parse_ascii_line(line: str):
 	return tuple(cell.strip() for cell in line.split("|")[1:-1])
 
 
-import functools
-import inspect
-
-
-def define_answer(sql: str, check_order=False):
+def define(sql: str, check_order=False):
 	def sql_test(schema: str):
 		def decorator(func):
 			@functools.wraps(func)

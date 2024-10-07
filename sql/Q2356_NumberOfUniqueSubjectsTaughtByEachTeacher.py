@@ -1,8 +1,10 @@
-from leetcode_sql_checker import define_answer
+from leetcode_sql_checker import define
 
-sql_test = define_answer("""
+answer = """
 SELECT teacher_id, count(distinct subject_id) as cnt FROM Teacher GROUP BY teacher_id
-""")
+"""
+
+sql_test = define(answer)
 
 @sql_test("""\
 	Create table If Not Exists Teacher (teacher_id int, subject_id int, dept_id int);
@@ -24,4 +26,3 @@ def test_example():
 	| 2          | 4   |
 	+------------+-----+
 	"""
-

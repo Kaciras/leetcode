@@ -1,11 +1,6 @@
-import pytest
+from leetcode_sql_checker import define
 
-# we want to have pytest assert introspection in the helpers
-pytest.register_assert_rewrite('leetcode_sql_checker')
-
-from leetcode_sql_checker import define_answer
-
-sql_test = define_answer("""
+sql_test = define("""
 SELECT D.name AS Department, E.name AS Employee, Salary
 FROM Department AS D
 JOIN (SELECT *, DENSE_RANK() OVER (PARTITION BY departmentId ORDER BY salary DESC) AS k FROM Employee) AS E
