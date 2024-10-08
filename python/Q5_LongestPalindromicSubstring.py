@@ -15,10 +15,21 @@ class Solution:
 		return result
 
 
-if __name__ == '__main__':
-	print(Solution().longestPalindrome("bb"))
-	print(Solution().longestPalindrome("ccc"))
-	print(Solution().longestPalindrome("a"))
-	print(Solution().longestPalindrome(""))
-	print(Solution().longestPalindrome("babad")) # bab
-	print(Solution().longestPalindrome("cbbd")) # bb
+def test_example1():
+	assert Solution().longestPalindrome("babad") == "bab"
+
+
+def test_example2():
+	assert Solution().longestPalindrome("cbbd") == "bb"
+
+
+def test_case1():
+	assert Solution().longestPalindrome("") == ""
+
+
+def test_case2():
+	assert Solution().longestPalindrome("a") == "a"
+
+
+def test_case3():
+	assert Solution().longestPalindrome("bb") == "bb"

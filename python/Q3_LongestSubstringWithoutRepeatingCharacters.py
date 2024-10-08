@@ -18,10 +18,21 @@ class Solution:
 		return max(longest, len(s) - left)
 
 
-if __name__ == '__main__':
-	assert Solution().lengthOfLongestSubstring("") == 0
-	assert Solution().lengthOfLongestSubstring(" ") == 1
-	assert Solution().lengthOfLongestSubstring("abcabcbb") == 3
-	assert Solution().lengthOfLongestSubstring("bbbbb") == 1
-	assert Solution().lengthOfLongestSubstring("pwwkew") == 3
+def test_case1():
 	assert Solution().lengthOfLongestSubstring("abba") == 2
+
+
+def test_example1():
+	assert Solution().lengthOfLongestSubstring("abcabcbb") == 3
+
+
+def test_example2():
+	assert Solution().lengthOfLongestSubstring("bbbbb") == 1
+
+
+def test_example3():
+	assert Solution().lengthOfLongestSubstring("pwwkew") == 3
+
+
+def test_user1():
+	assert Solution().lengthOfLongestSubstring("") == 0

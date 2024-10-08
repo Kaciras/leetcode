@@ -35,12 +35,25 @@ class Solution:
 		return (max(lmax1, lmax2) + min(rmin1, rmin2)) / 2
 
 
-if __name__ == '__main__':
-	print(Solution().findMedianSortedArrays([1, 3], [2]))  # 2
-	print(Solution().findMedianSortedArrays([1, 2], [3, 4]))  # 2.5
+def test_example1():
+	assert Solution().findMedianSortedArrays([1, 3], [2]) == 2
 
-	print(Solution().findMedianSortedArrays([5, 6], []))  # 5.5
-	print(Solution().findMedianSortedArrays([], [7]))  # 7
 
-	print(Solution().findMedianSortedArrays([1, 3, 5, 7, 9], [4, 5, 6, 7, 8, 10]))  # 6
-	print(Solution().findMedianSortedArrays([1, 2, 3, 4], [5, 6, 7, 8]))  # 4.5
+def test_example2():
+	assert Solution().findMedianSortedArrays([1, 2], [3, 4]) == 2.5
+
+
+def test_case1():
+	assert Solution().findMedianSortedArrays([5, 6], []) == 5.5
+
+
+def test_case2():
+	assert Solution().findMedianSortedArrays([], [7]) == 7
+
+
+def test_case3():
+	assert Solution().findMedianSortedArrays([1, 3, 5, 7, 9], [4, 5, 6, 7, 8, 10]) == 6
+
+
+def test_case4():
+	assert Solution().findMedianSortedArrays([1, 2, 3, 4], [5, 6, 7, 8]) == 4.5

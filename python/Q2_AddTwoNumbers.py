@@ -1,4 +1,4 @@
-from utils import linked_list, ListNode, print_linked_list
+from utils import linked_list, ListNode
 
 
 class Solution:
@@ -53,8 +53,23 @@ class Solution:
 		return head.next
 
 
-if __name__ == '__main__':
-	print_linked_list(Solution().addTwoNumbers(linked_list([0]), linked_list([9])))  # 9
-	print_linked_list(Solution().addTwoNumbers(linked_list([0]), linked_list([0])))  # 0
-	print_linked_list(Solution().addTwoNumbers(linked_list([2, 4, 3]), linked_list([5, 6, 4])))  # 7 -> 0 -> 8
-	print_linked_list(Solution().addTwoNumbers(linked_list([9, 9, 9]), linked_list([1])))  # 0 -> 0 -> 0 -> 1
+def test_example1():
+	assert Solution().addTwoNumbers(linked_list([2, 4, 3]), linked_list([5, 6, 4])).to_list() == [7, 0, 8]
+
+
+def test_example2():
+	assert Solution().addTwoNumbers(linked_list([0]), linked_list([0])).to_list() == [0]
+
+
+def test_example3():
+	a = linked_list([9, 9, 9, 9, 9, 9, 9])
+	b = linked_list([9, 9, 9, 9])
+	assert Solution().addTwoNumbers(a, b).to_list() == [8, 9, 9, 9, 0, 0, 0, 1]
+
+
+def test_case1():
+	assert Solution().addTwoNumbers(linked_list([0]), linked_list([0])).to_list() == [0]
+
+
+def test_case2():
+	assert Solution().addTwoNumbers(linked_list([9, 9, 9]), linked_list([1])).to_list() == [0, 0, 0, 1]
