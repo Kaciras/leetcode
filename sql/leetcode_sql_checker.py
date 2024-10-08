@@ -47,6 +47,13 @@ def _parse_ascii_line(line: str):
 	return tuple(cell.strip() for cell in line.split("|")[1:-1])
 
 
+def _normalize(value):
+	"""
+
+	"""
+	return "null" if value is None else str(value)
+
+
 class define:
 	"""
 	一些废案：
@@ -74,7 +81,7 @@ class define:
 
 			result = []
 			for row in cursor:
-				result.append(tuple(str(x) for x in row))
+				result.append(tuple(map(_normalize, row)))
 
 			if self.check_order:
 				assert result == b
