@@ -15,8 +15,21 @@ class Solution:
 		return shortest
 
 
-if __name__ == '__main__':
-	print(Solution().longestCommonPrefix([]))
-	print(Solution().longestCommonPrefix(["flower", "flow", "flight"]))
-	print(Solution().longestCommonPrefix(["a"]))
-	print(Solution().longestCommonPrefix(["aca", "cba"]))
+def test_example1():
+	assert Solution().longestCommonPrefix(["flower", "flow", "flight"]) == "fl"
+
+
+def test_example2():
+	assert Solution().longestCommonPrefix(["a"]) == "a"
+
+
+def test_example3():
+	assert Solution().longestCommonPrefix(["dog", "racecar", "car"]) == ""
+
+
+def test_case1():
+	assert Solution().longestCommonPrefix([]) == ""
+
+
+def test_case2():
+	assert Solution().longestCommonPrefix(["aca", "cba"]) == ""

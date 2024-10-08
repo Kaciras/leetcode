@@ -2,6 +2,10 @@ class Solution:
 	"""另一种更好的办法是使用切片来比较，并跳过比最长短的"""
 
 	def longestPalindrome(self, s: str) -> str:
+		"""
+		中心比较法，遍历字符，假定该字符是中心并检查两侧是否相等。
+		"""
+
 		def palindrome(j, k):
 			while j >= 0 and k < len(s) and s[j] == s[k]:
 				j -= 1
@@ -10,7 +14,9 @@ class Solution:
 
 		result = ""
 		for i in range(len(s)):
-			result = max(result, palindrome(i, i), palindrome(i, i + 1), key=len)
+			even = palindrome(i, i + 1)
+			odd = palindrome(i, i)
+			result = max(result, odd, even, key=len)
 
 		return result
 

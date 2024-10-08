@@ -1,3 +1,6 @@
+from pytest_unordered import unordered
+
+
 class Solution:
 	"""这题是 Medium 但实际上只有 Easy 难度"""
 
@@ -17,6 +20,13 @@ class Solution:
 		return [x + y for x in c for y in comb]
 
 
-if __name__ == '__main__':
-	print(Solution().letterCombinations("2"))
-	print(Solution().letterCombinations("234"))
+def test_example1():
+	assert Solution().letterCombinations("23") == unordered(["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"])
+
+
+def test_example2():
+	assert Solution().letterCombinations("") == unordered([])
+
+
+def test_example3():
+	assert Solution().letterCombinations("2") == unordered(["a", "b", "c"])

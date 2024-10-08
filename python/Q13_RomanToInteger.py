@@ -1,8 +1,4 @@
-from utils import benckmark
-
-
 class Solution:
-
 	table = {
 		"I": 1, "V": 5, "X": 10, "L": 50,
 		"C": 100, "D": 500, "M": 1000,
@@ -39,10 +35,13 @@ class Solution:
 		return result
 
 
-if __name__ == '__main__':
-	print(Solution().romanToInt("III"))  # 3
-	print(Solution().romanToInt("IV"))  # 4
-	print(Solution().romanToInt("IX"))  # 9
-	print(Solution().romanToInt("MCMXCIV"))  # 1994
+def test_example1():
+	assert Solution().romanToInt("III") == 3
 
-	benckmark(Solution().romanToInt, "MCMXCIV")
+
+def test_example2():
+	assert Solution().romanToInt("LVIII") == 58
+
+
+def test_example3():
+	assert Solution().romanToInt("MCMXCIV") == 1994

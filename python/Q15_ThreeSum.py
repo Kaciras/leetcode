@@ -1,5 +1,7 @@
 import collections
 
+from pytest_unordered import unordered
+
 
 class Solution:
 	def threeSum(self, nums: list[int]) -> list[list[int]]:
@@ -82,11 +84,38 @@ class Solution:
 		return result
 
 
-if __name__ == '__main__':
-	print(Solution().threeSum([1, 2, -2, -1]))  # 2
-	print(Solution().threeSum([1, 1, -2]))  # 1
-	print(Solution().threeSum([-2, 0, 1, 1, 2]))  # 2
-	print(Solution().threeSum([-1, 0, 1, 0]))  # 1
-	print(Solution().threeSum([0, 0, 0, 0, 0, 0]))  # 1
-	print(Solution().threeSum([-1, 0, 1, 2, -1, -4]))  # 2
-	print(Solution().threeSum([3, 0, -2, -1, 1, 2]))  # 3
+def _invoke_any_order(nums):
+	"""返回的是二维数组，要做两层无序处理，写个辅助函数"""
+	return unordered([unordered(x) for x in Solution().threeSum(nums)])
+
+
+def test_example1():
+	assert _invoke_any_order([-1, 0, 1, 2, -1, -4]) == [[-1, -1, 2], [-1, 0, 1]]
+
+
+def test_example2():
+	assert _invoke_any_order([0, 1, 1]) == []
+
+
+def test_example3():
+	assert _invoke_any_order([0, 0, 0]) == [[0, 0, 0]]
+
+
+def test_case1():
+	assert _invoke_any_order([1, 2, -2, -1]) == []
+
+
+def test_case2():
+	assert _invoke_any_order([-2, 0, 1, 1, 2]) == [[1, -2, 1], [2, -2, 0]]
+
+
+def test_case3():
+	assert _invoke_any_order([-1, 0, 1, 0]) == [[1, -1, 0]]
+
+
+def test_case4():
+	assert _invoke_any_order([3, 0, -2, -1, 1, 2]) == [[3, -2, -1], [1, -1, 0], [2, -2, 0]]
+
+
+def test_user1():
+	assert _invoke_any_order([1, 1, -2]) == [[1, -2, 1]]

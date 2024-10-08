@@ -16,8 +16,17 @@ class Solution:
 		return v if v.bit_length() < 32 else 0
 
 
-if __name__ == '__main__':
-	print(Solution().reverse(123))
-	print(Solution().reverse(-123))
-	print(Solution().reverse(120))
-	print(Solution().reverse(1534236469))
+def test_example1():
+	assert Solution().reverse(123) == 321
+
+
+def test_example2():
+	assert Solution().reverse(-123) == -321
+
+
+def test_example3():
+	assert Solution().reverse(120) == 21
+
+
+def test_case1():
+	assert Solution().reverse(1534236469) == 9646324351

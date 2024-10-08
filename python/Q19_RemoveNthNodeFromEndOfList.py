@@ -1,4 +1,4 @@
-from utils import ListNode
+from utils import ListNode, linked_list
 
 
 class Solution:
@@ -27,8 +27,6 @@ class Solution:
 
 
 if __name__ == '__main__':
-	import utils.common as util
-
-	print(Solution().removeNthFromEnd(util.linked_list([1, 2, 3, 4, 5]), 2))
-	print(Solution().removeNthFromEnd(util.linked_list([1, 5]), 1))
-	print(Solution().removeNthFromEnd(util.linked_list([1, 5]), 2))
+	print(Solution().removeNthFromEnd(linked_list([1, 2, 3, 4, 5]), 2))
+	print(Solution().removeNthFromEnd(linked_list([1, 5]), 1))
+	print(Solution().removeNthFromEnd(linked_list([1, 5]), 2))
