@@ -38,6 +38,7 @@ mod q203_remove_linked_list_elements;
 mod q398_random_pick_index;
 mod q130_surrounded_regions;
 mod q1768_merge_strings_alternately;
+mod q682_baseball_game;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
