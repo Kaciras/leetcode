@@ -2,6 +2,7 @@ from utils import benckmark
 
 pairs = {")": "(", "]": "[", "}": "{"}
 
+
 class Solution:
 
 	def isValid(self, s: str) -> bool:
@@ -17,11 +18,33 @@ class Solution:
 		return not stack
 
 
-if __name__ == '__main__':
-	print(Solution().isValid(""))
-	print(Solution().isValid("()[]{}"))
-	print(Solution().isValid("{[()]}"))
-	print(Solution().isValid("([)]"))
-	print(Solution().isValid("]"))
+def test_example1():
+	assert Solution().isValid("()") == True
 
+
+def test_example2():
+	assert Solution().isValid("()[]{}") == True
+
+
+def test_example3():
+	assert Solution().isValid("(]") == False
+
+
+def test_example4():
+	assert Solution().isValid("([])") == True
+
+
+def test_case1():
+	assert Solution().isValid("") == True
+
+
+def test_case2():
+	assert Solution().isValid("([)]") == False
+
+
+def test_case3():
+	assert Solution().isValid("]") == False
+
+
+if __name__ == '__main__':
 	benckmark(Solution().isValid, "()()(){}{}{}[][][]((({{{[[[]]]}}}))]{}{}", ratio=0.1)

@@ -1,4 +1,4 @@
-from utils import benckmark
+from utils import benckmark, node_to_list
 from utils import linked_list, ListNode, linked_list_factory
 
 
@@ -27,10 +27,23 @@ class Solution:
 		return prev_head.next
 
 
-if __name__ == '__main__':
-	print(Solution().mergeTwoLists(linked_list([1, 2, 4]), linked_list([1, 3, 4])))
-	print(Solution().mergeTwoLists(linked_list([1]), linked_list([])))
+def _invoke(l1: list[int], l2: list[int]):
+	return node_to_list(Solution().mergeTwoLists(linked_list(l1), linked_list(l2)))
 
+
+def test_example1():
+	assert _invoke([1, 2, 4], [1, 3, 4]) == [1, 1, 2, 3, 4, 4]
+
+
+def test_example2():
+	assert _invoke([], []) == []
+
+
+def test_example3():
+	assert _invoke([], [0]) == [0]
+
+
+if __name__ == '__main__':
 	a = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 29, 31, 37, 41]
 	b = [0, 2, 8, 12, 13, 14, 15, 16, 20, 21, 22, 30, 35, 39, 42, 45, 50, 51, 100, 200, 300, 400, 1000, 1024, 2048]
 	benckmark(Solution().mergeTwoLists, linked_list_factory(a), linked_list_factory(b), ratio=0.1)

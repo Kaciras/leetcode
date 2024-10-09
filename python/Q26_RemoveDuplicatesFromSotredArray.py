@@ -1,6 +1,6 @@
 class Solution:
 
-	def removeDuplicates(self, nums: list[int]) -> int:
+	def removeDuplicates(self, nums: list[int]):
 		last, length = None, 0
 		for n in nums:
 			if last != n:
@@ -10,9 +10,13 @@ class Solution:
 		return length
 
 
-if __name__ == '__main__':
-	input_0 = [1, 1, 2]
-	print(str(Solution().removeDuplicates(input_0)) + " " + str(input_0))
+def test_example1():
+	nums = [1, 1, 2]
+	length = Solution().removeDuplicates(nums)
+	assert nums[:length] == [1, 2]
 
-	input_1 = [0,0,1,1,1,2,2,3,3,4]
-	print(str(Solution().removeDuplicates(input_1)) + " " + str(input_1))
+
+def test_example2():
+	nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+	length = Solution().removeDuplicates(nums)
+	assert nums[:length] == [0, 1, 2, 3, 4]

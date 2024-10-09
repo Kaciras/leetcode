@@ -18,7 +18,9 @@ class Solution:
 		return result
 
 
-if __name__ == '__main__':
-	print(Solution().generateParenthesis(2))
-	print(Solution().generateParenthesis(3))
-	print(Solution().generateParenthesis(4))
+def test_example1():
+	assert Solution().generateParenthesis(3) == ["((()))", "(()())", "(())()", "()(())", "()()()"]
+
+
+def test_example2():
+	assert Solution().generateParenthesis(1) == ["()"]

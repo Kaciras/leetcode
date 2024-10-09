@@ -31,14 +31,6 @@ class ListNode[T]:
 			node = node.next
 		return length
 
-	def to_list(self):
-		"""链表必须无环"""
-		result, node = [], self
-		while node:
-			result.append(node.val)
-			node = node.next
-		return result
-
 
 def linked_list(values: list) -> ListNode:
 	head_, previous = None, None
@@ -54,6 +46,15 @@ def linked_list(values: list) -> ListNode:
 
 def linked_list_factory(values):
 	return lambda: linked_list(values)
+
+
+def node_to_list(node: Optional[ListNode]):
+	"""链表必须无环"""
+	result = []
+	while node:
+		result.append(node.val)
+		node = node.next
+	return result
 
 
 def print_linked_list(node: ListNode):
@@ -72,4 +73,4 @@ def print_linked_list(node: ListNode):
 		if node:
 			print(" -> ", end="")
 
-	print() # 一般不会在同一行加什么了，可以换行。
+	print()  # 一般不会在同一行加什么了，可以换行。
