@@ -14,6 +14,14 @@ class Solution:
 		return s
 
 
+def test_example1():
+	assert Solution().countAndSay(4) == "1211"
+
+
+def test_example2():
+	assert Solution().countAndSay(1) == "1"
+
+
 if __name__ == '__main__':
 	for ii in range(1, 30):
 		print(Solution().countAndSay(ii) + "\n")

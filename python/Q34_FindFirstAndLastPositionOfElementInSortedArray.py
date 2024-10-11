@@ -22,7 +22,13 @@ class Solution:
 		return [-1, -1] if end < start else [start, end]
 
 
-if __name__ == '__main__':
-	print(Solution().searchRange(nums=[], target=1))
-	print(Solution().searchRange(nums=[5, 7, 7, 8, 8, 10], target=8))
-	print(Solution().searchRange(nums=[5, 7, 7, 8, 8, 10], target=6))
+def test_example1():
+	assert Solution().searchRange([5, 7, 7, 8, 8, 10], 8) == [3, 4]
+
+
+def test_example2():
+	assert Solution().searchRange([5, 7, 7, 8, 8, 10], 6) == [-1, - 1]
+
+
+def test_example3():
+	assert Solution().searchRange([], 1) == [-1, - 1]

@@ -18,10 +18,21 @@ class Solution:
 		return -quotient if negative else min(quotient, 2147483647)
 
 
-if __name__ == '__main__':
-	print(Solution().divide(0, -1))
-	print(Solution().divide(1, 1))
-	print(Solution().divide(100, 3))
-	print(Solution().divide(50, -5))
-	print(Solution().divide(2 ** 31, 2))
-	print(Solution().divide(-2147483648, -1))
+def test_example1():
+	assert Solution().divide(10, 3) == 3
+
+
+def test_example2():
+	assert Solution().divide(7, -3) == -2
+
+
+def test_user1():
+	assert Solution().divide(0, -1) == 0
+
+
+def test_user2():
+	assert Solution().divide(-2147483648, -1) == 2147483647
+
+
+def test_user3():
+	assert Solution().divide(2 ** 31, 2) == 2 ** 30

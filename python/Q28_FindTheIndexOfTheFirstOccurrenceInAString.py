@@ -16,6 +16,7 @@ class Solution:
 		next_, i, k = [0] * len(needle), 0, -1
 		next_[0] = -1
 
+		# 无论 AhoCorasick 还是 KMP 都是预处理模式串的。
 		while i < len(needle) - 1:
 			if needle[i] == needle[k] or k == -1:
 				i += 1
@@ -37,11 +38,25 @@ class Solution:
 		return -1
 
 
+def test_example1():
+	assert Solution().strStr("sadbutsad", "sad") == 0
+
+
+def test_example2():
+	assert Solution().strStr("leetcode", "leeto") == -1
+
+
+def test_case1():
+	assert Solution().strStr("ababcabcaeabababca", "abababca") == 10
+
+
+def test_case2():
+	assert Solution().strStr("mississippi", "issi") == 1
+
+
+def test_user1():
+	assert Solution().strStr("", "abc") == -1
+
+
 if __name__ == '__main__':
-	print(Solution().strStr("ababcabcaeabababca", "abababca"))
-	print(Solution().strStr("mississippi", "issi"))
-	print(Solution().strStr("hello", ""))
-	print(Solution().strStr("", "abc"))
-	print(Solution().strStr("hello", "ll"))
-	print(Solution().strStr("aaaaa", "bba"))
 	benckmark(Solution().strStr, "ababcabcaeabababca", "abababca", ratio=0.1)
