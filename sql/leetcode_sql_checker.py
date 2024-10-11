@@ -1,6 +1,7 @@
 import inspect
 import os
 from functools import wraps, partial
+from typing import Optional
 
 import dotenv
 import mariadb
@@ -63,6 +64,7 @@ class define:
 	"""
 
 	check_order = False
+	delete_table: Optional[str] = None
 
 	def __init__(self, sql: str):
 		self.sql = sql
@@ -75,15 +77,17 @@ class define:
 		with connection.cursor() as cursor:
 			_execute_script(cursor, schema)
 			cursor.execute(self.sql)
-			h, b = _parse_ascii_table(expected)
-			x = tuple(x[0] for x in cursor.description)
-			assert x == h
+			if self.delete_table:
+				cursor.execute(f"SELECT * FROM {self.delete_table}")
+			header, body = _parse_ascii_table(expected)
+			columns = tuple(x[0].lower() for x in cursor.description)
+			assert columns == header
 
 			result = []
 			for row in cursor:
 				result.append(tuple(map(_normalize, row)))
 
 			if self.check_order:
-				assert result == b
+				assert result == body
 			else:
-				assert result == unordered(b)
+				assert result == unordered(body)
