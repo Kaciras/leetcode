@@ -22,6 +22,7 @@ def test_example2():
 	assert Solution().countAndSay(1) == "1"
 
 
+# 想起小时候看的一本左逼环保小说了，里头这玩意还挺有意思的。
 if __name__ == '__main__':
 	for ii in range(1, 30):
 		print(Solution().countAndSay(ii) + "\n")

@@ -1,5 +1,7 @@
 import itertools
 
+from pytest_unordered import unordered
+
 
 class Solution:
 
@@ -19,6 +21,19 @@ class Solution:
 		return list(itertools.permutations(nums))
 
 
-if __name__ == '__main__':
-	print(Solution().permute([1, 2]))
-	print(Solution().permute([1, 2, 3]))
+def test_example1():
+	assert Solution().permute([1, 2, 3]) == unordered([
+		[1, 2, 3],
+		[1, 3, 2],
+		[2, 1, 3],
+		[2, 3, 1],
+		[3, 1, 2],
+		[3, 2, 1],
+	])
+
+def test_example2():
+	assert Solution().permute([0, 1]) == unordered([[0, 1], [1, 0]])
+
+
+def test_example3():
+	assert Solution().permute([1]) == [[1]]
