@@ -43,6 +43,7 @@ mod q134_gas_station;
 mod q151_reverse_words_in_a_string;
 mod q135_candy;
 mod q392_is_subsequence;
+mod q54_spiral_matrix;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
