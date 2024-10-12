@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 sql_test = define("""
 SELECT product_name, year, price FROM Sales JOIN Product ON Sales.product_id = Product.product_id

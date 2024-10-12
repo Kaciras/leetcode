@@ -37,6 +37,7 @@ mod tests {
 	fn example2() {
 		assert_eq!(Solution::merge_alternately(String::from("ab"), String::from("pqrs")), String::from("apbqrs"));
 	}
+
 	#[test]
 	fn example3() {
 		assert_eq!(Solution::merge_alternately(String::from("abcd"), String::from("pq")), String::from("apbqcd"));

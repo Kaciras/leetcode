@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 # 日期运算，使用 INTERVAL <value> <unit> 来定义时长。
 

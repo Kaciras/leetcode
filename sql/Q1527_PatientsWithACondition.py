@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 sql_test = define("""
 SELECT * FROM Patients WHERE conditions LIKE 'DIAB1%' OR conditions LIKE '% DIAB1%'

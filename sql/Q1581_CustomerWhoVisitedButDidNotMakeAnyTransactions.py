@@ -1,4 +1,7 @@
-from leetcode_sql_checker import define
+from sql_questions import define
+
+# 复习 COUNT() 函数，通常用法是 COUNT(*)，但也可以提供一个参数用于统计该表达式非 NULL 的行数。
+# COUNT() 是聚合函数，统计每组 GROUP BY 的数量，如果没有 GROUP BY 语句则整表为一组。
 
 sql_test = define("""
 SELECT 

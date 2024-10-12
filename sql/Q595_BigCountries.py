@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 sql_test = define("SELECT name, population, area FROM World WHERE area >= 3000000 OR population >= 25000000")
 

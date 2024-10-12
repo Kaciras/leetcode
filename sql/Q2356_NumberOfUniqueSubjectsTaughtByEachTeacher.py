@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 answer = """
 SELECT teacher_id, count(distinct subject_id) as cnt FROM Teacher GROUP BY teacher_id

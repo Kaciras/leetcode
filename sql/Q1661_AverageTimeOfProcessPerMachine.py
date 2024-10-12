@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 # AVG 就能自动除以数量，无需自己再 SELECT。
 

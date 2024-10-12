@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 # CASE 是标准的 SQL，用来实现条件逻辑。
 sql_test = define("""

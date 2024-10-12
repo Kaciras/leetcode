@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 answer = "SELECT name FROM Customer WHERE NOT referee_id <=> 2"
 

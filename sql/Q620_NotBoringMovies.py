@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 sql_test = define("SELECT * FROM cinema WHERE id % 2 = 1 AND description != 'boring' ORDER BY rating DESC")
 

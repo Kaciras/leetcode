@@ -1,4 +1,4 @@
-from leetcode_sql_checker import define
+from sql_questions import define
 
 sql_test = define("""
 SELECT D.name AS Department, E.name AS Employee, Salary
