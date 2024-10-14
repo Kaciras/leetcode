@@ -46,6 +46,7 @@ mod q392_is_subsequence;
 mod q54_spiral_matrix;
 mod q137_single_number_2;
 mod q290_word_pattern;
+mod q209_minimum_size_subarray_sum;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
