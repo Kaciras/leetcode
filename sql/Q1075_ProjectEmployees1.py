@@ -1,7 +1,5 @@
 from sql_questions import define
 
-# 注意 UNION 会去重而 UNION ALL 不会。
-
 sql_test = define("""
 SELECT 
 	project_id, ROUND(AVG(experience_years), 2) AS average_years 

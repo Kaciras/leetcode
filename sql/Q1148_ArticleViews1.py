@@ -2,6 +2,9 @@ from sql_questions import define
 
 sql_test = define("SELECT DISTINCT author_id AS id FROM Views WHERE author_id=viewer_id ORDER BY id")
 
+sql_test.check_order = True
+
+
 @sql_test("""\
 Create table If Not Exists Views (article_id int, author_id int, viewer_id int, view_date date);
 Truncate table Views;
