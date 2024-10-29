@@ -28,12 +28,15 @@ def _execute_script(script: str):
 	"""
 	MariaDB 的连接库不支持一次执行多条语句，所以得自己分割下。
 	https://jira.mariadb.org/browse/CONPY-151
+
+	LeetCode 只给了 MySQL 的 schema，在使用 PostgreSQL 时需要转换一些列的类型。
 	"""
 	for statement in script.split(";\n"):
 		if not statement:
 			continue
 		if statement.startswith("--"):
 			continue
+
 		if statement.startswith("Create table"):
 			statement = transpile_ddl(statement)
 
@@ -98,6 +101,9 @@ class define:
 				cursor.execute(f"SELECT * FROM {self.delete_table}")
 
 			header, body = _parse_ascii_table(expected)
+
+			# LeetCode 不检查列名的大小写，我这也不查了。
+			header = tuple(x.lower() for x in header)
 			columns = tuple(x[0].lower() for x in cursor.description)
 			assert columns == header
 
