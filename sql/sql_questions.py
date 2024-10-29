@@ -1,37 +1,48 @@
 import inspect
 import os
+import re
 from functools import wraps, partial
 from typing import Optional
 
 import dotenv
-import mariadb
+import psycopg
 from pytest_unordered import unordered
 
 __all__ = ("connection", "define")
 
 dotenv.load_dotenv()
 
-connection = mariadb.connect(
-	database=os.getenv("MARIADB_DATABASE"),
-	host=os.getenv("MARIADB_HOST"),
-	port=int(os.getenv("MARIADB_PORT")),
-	user=os.getenv("MARIADB_USER"),
-	password=os.getenv("MARIADB_PASSWORD"),
+_enum_re = re.compile(r"ENUM\(.+?\)", re.IGNORECASE)
+
+connection = psycopg.connect(
+	dbname="test",
+	host=os.getenv("PG_HOST"),
+	port=os.getenv("PG_PORT"),
+	user=os.getenv("PG_USER"),
+	password=os.getenv("PG_PASSWORD"),
 )
 
 
-def _execute_script(cursor: mariadb.Cursor, script: str):
+
+def _execute_script(script: str):
 	"""
 	MariaDB 的连接库不支持一次执行多条语句，所以得自己分割下。
 	https://jira.mariadb.org/browse/CONPY-151
 	"""
-	lines = script.split(";\n")
-	for statement in lines:
+	for statement in script.split(";\n"):
 		if not statement:
 			continue
 		if statement.startswith("--"):
 			continue
-		cursor.execute(statement)
+		if statement.startswith("Create table"):
+			statement = transpile_ddl(statement)
+
+		connection.execute(statement)
+
+
+def transpile_ddl(sql: str):
+	sql = sql.replace(" datetime", " timestamp")
+	return _enum_re.sub("text", sql)
 
 
 def _parse_ascii_table(table: str):
@@ -74,16 +85,18 @@ class define:
 	def __init__(self, sql: str):
 		self.sql = sql
 
-	def __call__(self, schema: str):
+	def __call__(self, schema: str = None, **kwargs):
 		return lambda f: wraps(f)(partial(self._template, schema, f))
 
 	def _template(self, schema: str, func):
 		expected = inspect.cleandoc(func.__doc__)
 		with connection.cursor() as cursor:
-			_execute_script(cursor, schema)
+			_execute_script(schema)
 			cursor.execute(self.sql)
+
 			if self.delete_table:
 				cursor.execute(f"SELECT * FROM {self.delete_table}")
+
 			header, body = _parse_ascii_table(expected)
 			columns = tuple(x[0].lower() for x in cursor.description)
 			assert columns == header
