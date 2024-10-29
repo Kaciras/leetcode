@@ -12,7 +12,7 @@ __all__ = ("connection", "define")
 
 dotenv.load_dotenv()
 
-_enum_re = re.compile(r"ENUM\(.+?\)", re.IGNORECASE)
+_incompatible_re = re.compile(r" (FLOAT|ENUM)(\(.+?\))", re.IGNORECASE)
 
 connection = psycopg.connect(
 	dbname="test",
@@ -21,7 +21,6 @@ connection = psycopg.connect(
 	user=os.getenv("PG_USER"),
 	password=os.getenv("PG_PASSWORD"),
 )
-
 
 
 def _execute_script(script: str):
@@ -44,8 +43,20 @@ def _execute_script(script: str):
 
 
 def transpile_ddl(sql: str):
+	"""
+	转换 MySQL 的建表语句到 PG，处理下数据类型的名称。
+
+	:param sql: MySQL 的建表语句
+	:return: PostgreSQL 兼容的建表语句
+	"""
+	def replace_type(match):
+		if match[1] == "float":
+			return " numeric" + match[2]
+		if match[1] == "ENUM":
+			return " text" + match[2]
+
 	sql = sql.replace(" datetime", " timestamp")
-	return _enum_re.sub("text", sql)
+	return _incompatible_re.sub(replace_type, sql)
 
 
 def _parse_ascii_table(table: str):
@@ -59,17 +70,13 @@ def _parse_ascii_table(table: str):
 
 
 def _parse_ascii_line(line: str):
-	return tuple(map(_sql_value_to_py, line.split("|")[1:-1]))
-
-
-def _sql_value_to_py(value: str):
-	value = value.strip()
-	return None if value == "null" else value
+	return tuple(value.strip() for value in  line.split("|")[1:-1])
 
 
 def _py_value_to_sql(value):
 	"""
-
+	SQL 输出中的 null 对应 None，假定不会有 "null" 这个字符串。
+	另外这种处理只需要一边即可，不用把 SQL 的值再转一遍。
 	"""
 	return "null" if value is None else str(value)
 
