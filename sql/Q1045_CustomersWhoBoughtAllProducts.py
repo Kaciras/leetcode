@@ -19,22 +19,12 @@ Truncate table Product;
 insert into Product (product_key) values ('5');
 insert into Product (product_key) values ('6');
 """)
-def test_example():
+def test_example1():
 	"""\
-	+------------+--------------+--------------+----------------+
-	| student_id | student_name | subject_name | attended_exams |
-	+------------+--------------+--------------+----------------+
-	| 1          | Alice        | Math         | 3              |
-	| 1          | Alice        | Physics      | 2              |
-	| 1          | Alice        | Programming  | 1              |
-	| 2          | Bob          | Math         | 1              |
-	| 2          | Bob          | Physics      | 0              |
-	| 2          | Bob          | Programming  | 1              |
-	| 6          | Alex         | Math         | 0              |
-	| 6          | Alex         | Physics      | 0              |
-	| 6          | Alex         | Programming  | 0              |
-	| 13         | John         | Math         | 1              |
-	| 13         | John         | Physics      | 1              |
-	| 13         | John         | Programming  | 1              |
-	+------------+--------------+--------------+----------------+
+	+-------------+
+	| customer_id |
+	+-------------+
+	| 1           |
+	| 3           |
+	+-------------+
 	"""

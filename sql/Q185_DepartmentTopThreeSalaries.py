@@ -22,7 +22,7 @@ Truncate table Department;
 insert into Department (id, name) values ('1', 'IT');
 insert into Department (id, name) values ('2', 'Sales');
 """)
-def test_example():
+def test_example1():
 	"""\
 	+------------+----------+--------+
 	| Department | Employee | Salary |

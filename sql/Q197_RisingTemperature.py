@@ -1,10 +1,11 @@
 from sql_questions import define
 
 # 日期运算，使用 INTERVAL <value> <unit> 来定义时长。
+# MySQL 可以写 INTERVAL 1 DAY，但 PG 必须把后面的 '1 DAY' 用冒号围起来。
 
 sql_test = define("""
 SELECT b.id FROM Weather a JOIN Weather b 
-ON a.recordDate = b.recordDate - INTERVAL 1 DAY 
+ON a.recordDate = b.recordDate - INTERVAL '1 DAY'
 WHERE a.temperature < b.temperature
 """)
 

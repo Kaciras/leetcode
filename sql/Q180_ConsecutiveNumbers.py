@@ -26,7 +26,7 @@ insert into Logs (id, num) values ('5', '1');
 insert into Logs (id, num) values ('6', '2');
 insert into Logs (id, num) values ('7', '2');
 """)
-def test_example():
+def test_example1():
 	"""
 	+-----------------+
 	| ConsecutiveNums |

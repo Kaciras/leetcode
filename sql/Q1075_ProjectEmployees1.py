@@ -29,7 +29,7 @@ insert into Employee (employee_id, name, experience_years) values ('2', 'Ali', '
 insert into Employee (employee_id, name, experience_years) values ('3', 'John', '1');
 insert into Employee (employee_id, name, experience_years) values ('4', 'Doe', '2');
 """)
-def test_example():
+def test_example1():
 	"""
 	+-------------+---------------+
 	| project_id  | average_years |

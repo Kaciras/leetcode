@@ -20,7 +20,7 @@ insert into Products (product_id, new_price, change_date) values ('1', '35', '20
 insert into Products (product_id, new_price, change_date) values ('2', '65', '2019-08-17');
 insert into Products (product_id, new_price, change_date) values ('3', '20', '2019-08-18');
 """)
-def test_example():
+def test_example1():
 	"""
 	+------------+-------+
 	| product_id | price |

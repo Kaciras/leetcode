@@ -6,7 +6,7 @@ SELECT a.id, b.student FROM Seat a JOIN Seat b ON a.id + 1 = b.id WHERE a.id % 2
 UNION
 SELECT a.id, b.student FROM Seat a JOIN Seat b ON a.id = b.id + 1 WHERE a.id % 2 = 0
 UNION
-SELECT * FROM Seat WHERE id = (SELECT MAX(id) FROM Seat) AND id % 2 = 1 ORDER BY id ASC
+SELECT * FROM Seat WHERE id = (SELECT MAX(id) FROM Seat) AND id % 2 = 1 ORDER BY id
 """)
 
 # 用 CASE 判断三种情况，调整 id。
@@ -18,7 +18,7 @@ SELECT CASE
 		id + 1
 	ELSE
 		id - 1
-END AS id, student FROM Seat ORDER BY id ASC
+END AS id, student FROM Seat ORDER BY id
 """)
 
 sql_test.check_order = True
@@ -33,7 +33,7 @@ insert into Seat (id, student) values ('3', 'Emerson');
 insert into Seat (id, student) values ('4', 'Green');
 insert into Seat (id, student) values ('5', 'Jeames');
 """)
-def test_example():
+def test_example1():
 	"""
 	+----+---------+
 	| id | student |

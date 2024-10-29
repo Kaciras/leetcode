@@ -16,7 +16,7 @@ insert into Views (article_id, author_id, viewer_id, view_date) values ('4', '7'
 insert into Views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21');
 insert into Views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21');
 """)
-def test_example():
+def test_example1():
 	"""
 	+------+
 	| id   |

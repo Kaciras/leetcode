@@ -1,15 +1,15 @@
 from sql_questions import define
 
 sql_test = define("""
-SELECT 
-	name, bonus 
-FROM 
-	Employee 
-LEFT JOIN 
+SELECT
+	name, bonus
+FROM
+	Employee
+LEFT JOIN
 	Bonus
-ON 
-	Employee.empId = Bonus.empId 
-WHERE 
+ON
+	Employee.empId = Bonus.empId
+WHERE
 	bonus < 1000 OR bonus IS NULL
 """)
 
@@ -26,7 +26,7 @@ Truncate table Bonus;
 insert into Bonus (empId, bonus) values ('2', '500');
 insert into Bonus (empId, bonus) values ('4', '2000');
 """)
-def test_example():
+def test_example1():
 	"""
 	+------+-------+
 	| name | bonus |

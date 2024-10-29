@@ -7,11 +7,11 @@ SELECT (SELECT DISTINCT Salary FROM Employee ORDER BY salary DESC LIMIT 1 OFFSET
 """)
 
 @sql_test("""\
-	Create table If Not Exists Employee (id int, salary int);
-	Truncate table Employee;
-	insert into Employee (id, salary) values ('1', '100');
-	insert into Employee (id, salary) values ('2', '200');
-	insert into Employee (id, salary) values ('3', '300');
+Create table If Not Exists Employee (id int, salary int);
+Truncate table Employee;
+insert into Employee (id, salary) values ('1', '100');
+insert into Employee (id, salary) values ('2', '200');
+insert into Employee (id, salary) values ('3', '300');
 """)
 def test_example1():
 	"""
@@ -23,9 +23,9 @@ def test_example1():
 	"""
 
 @sql_test("""\
-	Create table If Not Exists Employee (id int, salary int);
-	Truncate table Employee;
-	insert into Employee (id, salary) values ('1', '100');
+Create table If Not Exists Employee (id int, salary int);
+Truncate table Employee;
+insert into Employee (id, salary) values ('1', '100');
 """)
 def test_example2():
 	"""

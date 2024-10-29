@@ -1,8 +1,11 @@
 from sql_questions import define
 
+# MySQL 格式化日期: DATE_FORMAT(trans_date, "%Y-%m")
+# PG 格式化日期: TO_CHAR(trans_date, 'yyyy-mm')
+
 sql_test = define("""
 SELECT
-	DATE_FORMAT(trans_date, "%Y-%m") AS month,
+	TO_CHAR(trans_date, 'yyyy-mm') AS month,
 	country,
 	COUNT(*) AS trans_count,
 	COUNT(CASE WHEN state = 'approved' THEN 1 END) AS approved_count,

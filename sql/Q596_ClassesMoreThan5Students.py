@@ -20,7 +20,7 @@ insert into Courses (student, class) values ('G', 'Math');
 insert into Courses (student, class) values ('H', 'Math');
 insert into Courses (student, class) values ('I', 'Math');
 """)
-def test_example():
+def test_example1():
 	"""
 	+---------+
 	| class   |
