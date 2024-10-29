@@ -3,7 +3,7 @@ use std::collections::HashMap;
 
 pub struct Solution {}
 
-// 这题跟 205 是一样的，只不过把字符换成了字符串。
+// 这题跟 205 是一样的，只不过把字符换成了字符串，导致两次的类型不同需要多写点。
 impl Solution {
 	pub fn word_pattern(pattern: String, s: String) -> bool {
 		let mut pattern = pattern.as_bytes();

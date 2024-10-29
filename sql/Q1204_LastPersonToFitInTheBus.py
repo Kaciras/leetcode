@@ -1,5 +1,9 @@
 from sql_questions import define
 
+# SUM 也能 OVER 开窗，这里没有写窗口的范围，使用的是默认值：
+# 1) 若没有 ORDER BY，则范围为全部。
+# 2) 若有 ORDER BY，则范围为 BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW。
+
 sql_test = define(r"""
 SELECT person_name FROM (
   SELECT person_name, SUM(weight) OVER (ORDER BY turn) AS total FROM Queue

@@ -18,6 +18,9 @@ ORDER BY
 	employee_id
 """)
 
+sql_test.check_order = True
+
+
 @sql_test("""\
 Create table If Not Exists Employees(employee_id int, name varchar(20), reports_to int, age int);
 Truncate table Employees;
