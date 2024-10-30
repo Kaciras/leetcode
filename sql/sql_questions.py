@@ -49,6 +49,7 @@ def transpile_ddl(sql: str):
 	:param sql: MySQL 的建表语句
 	:return: PostgreSQL 兼容的建表语句
 	"""
+
 	def replace_type(match):
 		if match[1] == "float":
 			return " numeric" + match[2]
@@ -70,7 +71,7 @@ def _parse_ascii_table(table: str):
 
 
 def _parse_ascii_line(line: str):
-	return tuple(value.strip() for value in  line.split("|")[1:-1])
+	return tuple(value.strip() for value in line.split("|")[1:-1])
 
 
 def _py_value_to_sql(value):
@@ -100,6 +101,8 @@ class define:
 
 	def _template(self, schema: str, func):
 		expected = inspect.cleandoc(func.__doc__)
+		connection.rollback()
+
 		with connection.cursor() as cursor:
 			_execute_script(schema)
 			cursor.execute(self.sql)
