@@ -48,7 +48,7 @@ insert into Examinations (student_id, subject_name) values ('13', 'Physics');
 insert into Examinations (student_id, subject_name) values ('2', 'Math');
 insert into Examinations (student_id, subject_name) values ('1', 'Math');
 """)
-def test_example():
+def test_example1():
 	"""\
 	+------------+--------------+--------------+----------------+
 	| student_id | student_name | subject_name | attended_exams |

@@ -13,7 +13,7 @@ insert into Patients (patient_id, patient_name, conditions) values ('3', 'Bob', 
 insert into Patients (patient_id, patient_name, conditions) values ('4', 'George', 'ACNE DIAB100');
 insert into Patients (patient_id, patient_name, conditions) values ('5', 'Alain', 'DIAB201');
 """)
-def test_example():
+def test_example1():
 	"""\
 	+------------+--------------+--------------+
 	| patient_id | patient_name | conditions   |

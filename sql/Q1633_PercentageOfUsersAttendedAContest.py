@@ -3,7 +3,7 @@ from sql_questions import define
 sql_test = define("""
 SELECT 
 	contest_id, 
-	ROUND(COUNT(*) * 100 / (SELECT COUNT(*) FROM Users), 2) AS percentage 
+	ROUND(COUNT(*)::numeric * 100 / (SELECT COUNT(*) FROM Users), 2) AS percentage 
 FROM 
 	Users 
 JOIN 
@@ -38,14 +38,14 @@ insert into Register (contest_id, user_id) values ('210', '2');
 insert into Register (contest_id, user_id) values ('207', '2');
 insert into Register (contest_id, user_id) values ('210', '7');
 """)
-def test_example():
+def test_example1():
 	"""
 	+------------+------------+
 	| contest_id | percentage |
 	+------------+------------+
-	| 208        | 100.0      |
-	| 209        | 100.0      |
-	| 210        | 100.0      |
+	| 208        | 100.00     |
+	| 209        | 100.00     |
+	| 210        | 100.00     |
 	| 215        | 66.67      |
 	| 207        | 33.33      |
 	+------------+------------+

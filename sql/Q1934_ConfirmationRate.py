@@ -23,7 +23,7 @@ insert into Confirmations (user_id, time_stamp, action) values ('7', '2021-06-14
 insert into Confirmations (user_id, time_stamp, action) values ('2', '2021-01-22 00:00:00', 'confirmed');
 insert into Confirmations (user_id, time_stamp, action) values ('2', '2021-02-28 23:59:59', 'timeout');
 """)
-def test_example():
+def test_example1():
 	"""\
 	+---------+-------------------+
 	| user_id | confirmation_rate |

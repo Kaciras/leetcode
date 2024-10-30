@@ -26,7 +26,7 @@ insert into Transactions (id, country, state, amount, trans_date) values ('122',
 insert into Transactions (id, country, state, amount, trans_date) values ('123', 'US', 'approved', '2000', '2019-01-01');
 insert into Transactions (id, country, state, amount, trans_date) values ('124', 'DE', 'approved', '2000', '2019-01-07');
 """)
-def test_example():
+def test_example1():
 	"""
 	+----------+---------+-------------+----------------+--------------------+-----------------------+
 	| month    | country | trans_count | approved_count | trans_total_amount | approved_total_amount |

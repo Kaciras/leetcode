@@ -1,6 +1,6 @@
 from sql_questions import define
 
-answer = """
+answer = r"""
 SELECT teacher_id, count(distinct subject_id) as cnt FROM Teacher GROUP BY teacher_id
 """
 
@@ -17,7 +17,7 @@ sql_test = define(answer)
 	insert into Teacher (teacher_id, subject_id, dept_id) values ('2', '3', '1');
 	insert into Teacher (teacher_id, subject_id, dept_id) values ('2', '4', '1');
 """)
-def test_example():
+def test_example1():
 	"""
 	+------------+-----+
 	| teacher_id | cnt |

@@ -6,15 +6,15 @@ sql_test = define("""
 (
 	SELECT name AS results 
 	FROM Users JOIN MovieRating ON Users.user_id = MovieRating.user_id 
-	GROUP BY Users.user_id 
+	GROUP BY Users.name 
 	ORDER BY COUNT(*) DESC, name ASC LIMIT 1
 )
 UNION ALL
 (
 	SELECT title AS results 
 	FROM Movies JOIN MovieRating ON Movies.movie_id = MovieRating.movie_id
-	WHERE YEAR(created_at) = 2020 AND MONTH(created_at) = 2
-	GROUP BY Movies.movie_id
+	WHERE created_at BETWEEN '2020-02-01' AND '2020-02-29'
+	GROUP BY Movies.title
 	ORDER BY AVG(rating) DESC, title ASC LIMIT 1
 )
 """)
@@ -46,7 +46,7 @@ insert into MovieRating (movie_id, user_id, rating, created_at) values ('2', '3'
 insert into MovieRating (movie_id, user_id, rating, created_at) values ('3', '1', '3', '2020-02-22');
 insert into MovieRating (movie_id, user_id, rating, created_at) values ('3', '2', '4', '2020-02-25');
 """)
-def test_example():
+def test_example1():
 	"""
 	+--------------+
 	| results      |

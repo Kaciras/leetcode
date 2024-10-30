@@ -11,7 +11,7 @@ insert into Products (product_id, low_fats, recyclable) values ('2', 'N', 'Y');
 insert into Products (product_id, low_fats, recyclable) values ('3', 'Y', 'Y');
 insert into Products (product_id, low_fats, recyclable) values ('4', 'N', 'N');
 """)
-def test_example():
+def test_example1():
 	"""
 	+-------------+
 	| product_id  |

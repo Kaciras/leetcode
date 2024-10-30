@@ -11,12 +11,12 @@ FROM Users ORDER BY user_id
 sql_test.check_order = True
 
 @sql_test("""\
-	Create table If Not Exists Users (user_id int, name varchar(40));
-	Truncate table Users;
-	insert into Users (user_id, name) values ('1', 'aLice');
-	insert into Users (user_id, name) values ('2', 'bOB');
+Create table If Not Exists Users (user_id int, name varchar(40));
+Truncate table Users;
+insert into Users (user_id, name) values ('1', 'aLice');
+insert into Users (user_id, name) values ('2', 'bOB');
 """)
-def test_example():
+def test_example1():
 	"""
 	+---------+-------+
 	| user_id | name  |

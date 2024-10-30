@@ -18,7 +18,7 @@ insert into Employees (employee_id, name, manager_id, salary) values ('1', 'Kale
 insert into Employees (employee_id, name, manager_id, salary) values ('9', 'Mikaela', NULL, '50937');
 insert into Employees (employee_id, name, manager_id, salary) values ('11', 'Joziah', '6', '28485');
 """)
-def test_example():
+def test_example1():
 	"""
 	+-------------+
 	| employee_id |

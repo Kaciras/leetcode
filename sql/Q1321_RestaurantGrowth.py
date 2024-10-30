@@ -11,7 +11,7 @@ FROM
 (
 	SELECT
 		visited_on,
-		SUM(amount) OVER(ORDER BY visited_on RANGE BETWEEN INTERVAL 6 DAY PRECEDING AND CURRENT ROW) AS amount 
+		SUM(amount) OVER(ORDER BY visited_on RANGE BETWEEN INTERVAL '6 DAY' PRECEDING AND CURRENT ROW) AS amount 
     FROM
 		Customer 
 ) _ 
@@ -25,15 +25,17 @@ LIMIT 99999 OFFSET 6
 # 不用窗函数也能做啊，自己分组 + 过滤一下。
 sql_test = define("""
 SELECT 
-	v1.visited_on, SUM(amount) AS amount, ROUND(SUM(amount) / 7, 2) AS average_amount 
+	v1.visited_on, 
+	SUM(amount) AS amount, 
+	ROUND(SUM(amount) / 7::numeric, 2) AS average_amount 
 FROM 
 	(SELECT DISTINCT visited_on FROM Customer) v1 JOIN Customer v2 
 ON 
-	v2.visited_on <= v1.visited_on AND v2.visited_on + INTERVAL 6 DAY >= v1.visited_on 
+	v2.visited_on <= v1.visited_on AND v2.visited_on + INTERVAL '6 DAY' >= v1.visited_on 
 GROUP BY 
 	v1.visited_on 
 HAVING 
-	MIN(v2.visited_on) + INTERVAL 6 DAY = v1.visited_on 
+	MIN(v2.visited_on) + INTERVAL '6 DAY' = v1.visited_on 
 ORDER BY 
 	v1.visited_on
 """)
@@ -53,14 +55,14 @@ insert into Customer (customer_id, name, visited_on, amount) values ('9', 'Jaze'
 insert into Customer (customer_id, name, visited_on, amount) values ('1', 'Jhon', '2019-01-10', '130');
 insert into Customer (customer_id, name, visited_on, amount) values ('3', 'Jade', '2019-01-10', '150');
 """)
-def test_example():
+def test_example1():
 	"""
 	+--------------+--------------+----------------+
 	| visited_on   | amount       | average_amount |
 	+--------------+--------------+----------------+
 	| 2019-01-07   | 860          | 122.86         |
-	| 2019-01-08   | 840          | 120            |
-	| 2019-01-09   | 840          | 120            |
+	| 2019-01-08   | 840          | 120.00         |
+	| 2019-01-09   | 840          | 120.00         |
 	| 2019-01-10   | 1000         | 142.86         |
 	+--------------+--------------+----------------+
 	"""

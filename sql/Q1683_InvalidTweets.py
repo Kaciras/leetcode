@@ -9,7 +9,7 @@ Truncate table Tweets;
 insert into Tweets (tweet_id, content) values ('1', 'Let us Code');
 insert into Tweets (tweet_id, content) values ('2', 'More than fifteen chars are here!');
 """)
-def test_example():
+def test_example1():
 	"""
 	+----------+
 	| tweet_id |

@@ -22,7 +22,7 @@ insert into Queue (person_id, person_name, weight, turn) values ('6', 'John Cena
 insert into Queue (person_id, person_name, weight, turn) values ('1', 'Winston', '500', '6');
 insert into Queue (person_id, person_name, weight, turn) values ('2', 'Marie', '200', '4');
 """)
-def test_example():
+def test_example1():
 	"""\
 	+-------------+
 	| person_name |

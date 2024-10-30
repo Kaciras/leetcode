@@ -40,7 +40,7 @@ insert into Orders (product_id, order_date, unit) values ('5', '2020-02-25', '50
 insert into Orders (product_id, order_date, unit) values ('5', '2020-02-27', '50');
 insert into Orders (product_id, order_date, unit) values ('5', '2020-03-01', '50');
 """)
-def test_example():
+def test_example1():
 	"""\
 	+--------------------+---------+
 	| product_name       | unit    |

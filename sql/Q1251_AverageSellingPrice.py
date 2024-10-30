@@ -4,7 +4,7 @@ from sql_questions import define
 # BETWEEN 是双闭区间，此题正好是相等的日期也算。
 
 sql_test = define("""
-SELECT Prices.product_id, COALESCE(ROUND(SUM(price * units) / SUM(units), 2), 0) AS average_price
+SELECT Prices.product_id, COALESCE(ROUND(SUM(price * units)::numeric / SUM(units), 2), 0) AS average_price
 FROM Prices LEFT JOIN UnitsSold 
 ON Prices.product_id = UnitsSold.product_id AND purchase_date BETWEEN start_date AND end_date
 GROUP BY Prices.product_id
@@ -24,7 +24,7 @@ insert into UnitsSold (product_id, purchase_date, units) values ('1', '2019-03-0
 insert into UnitsSold (product_id, purchase_date, units) values ('2', '2019-02-10', '200');
 insert into UnitsSold (product_id, purchase_date, units) values ('2', '2019-03-22', '30');
 """)
-def test_example():
+def test_example1():
 	"""
 	+------------+---------------+
 	| product_id | average_price |

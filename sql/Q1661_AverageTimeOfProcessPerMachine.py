@@ -3,7 +3,7 @@ from sql_questions import define
 # AVG 就能自动除以数量，无需自己再 SELECT。
 
 sql_test = define("""
-SELECT a1.machine_id, round(avg(a2.timestamp - a1.timestamp), 3) AS processing_time 
+SELECT a1.machine_id, ROUND(AVG(a2.timestamp - a1.timestamp)::numeric, 3) AS processing_time 
 FROM Activity a1
 JOIN Activity a2 
 ON a1.machine_id = a2.machine_id AND a1.process_id = a2.process_id
@@ -27,7 +27,7 @@ insert into Activity (machine_id, process_id, activity_type, timestamp) values (
 insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'start', '2.5');
 insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'end', '5');
 """)
-def test_example():
+def test_example1():
 	"""\
 	+------------+-----------------+
 	| machine_id | processing_time |

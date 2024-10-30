@@ -36,7 +36,7 @@ insert into Transactions (transaction_id, visit_id, amount) values ('9', '5', '2
 insert into Transactions (transaction_id, visit_id, amount) values ('12', '1', '910');
 insert into Transactions (transaction_id, visit_id, amount) values ('13', '2', '970');
 """)
-def test_example():
+def test_example1():
 	"""
 	+-------------+----------------+
 	| customer_id | count_no_trans |

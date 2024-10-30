@@ -52,8 +52,8 @@ def transpile_ddl(sql: str):
 	def replace_type(match):
 		if match[1] == "float":
 			return " numeric" + match[2]
-		if match[1] == "ENUM":
-			return " text" + match[2]
+		if match[1].lower() == "enum":
+			return " text"
 
 	sql = sql.replace(" datetime", " timestamp")
 	return _incompatible_re.sub(replace_type, sql)
