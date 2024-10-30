@@ -3,9 +3,9 @@ from sql_questions import define
 # 直接想到的，分别 JOIN 配奇偶，最后 UNION 在一起，性能很差。
 sql_test = define("""
 SELECT a.id, b.student FROM Seat a JOIN Seat b ON a.id + 1 = b.id WHERE a.id % 2 = 1
-UNION
+UNION ALL
 SELECT a.id, b.student FROM Seat a JOIN Seat b ON a.id = b.id + 1 WHERE a.id % 2 = 0
-UNION
+UNION ALL
 SELECT * FROM Seat WHERE id = (SELECT MAX(id) FROM Seat) AND id % 2 = 1 ORDER BY id
 """)
 

@@ -1,12 +1,12 @@
 from sql_questions import define
 
-# 这题也可以用 COUNT(*) + PARTIION 来过滤只有一个部门的。
+# UNION 不加 ALL 会进行去重，导致顺序变化，UNION ALL 则按照添加的顺序返回。
 
 sql_test = define(R"""
 SELECT 'Low Salary' AS category, COUNT(*) AS accounts_count FROM Accounts WHERE income < 20000
-UNION
+UNION ALL
 SELECT 'Average Salary' AS category, COUNT(*) AS accounts_count FROM Accounts WHERE income BETWEEN 20000 AND 50000
-UNION
+UNION ALL
 SELECT 'High Salary' AS category, COUNT(*) AS accounts_count FROM Accounts WHERE income > 50000
 """)
 
