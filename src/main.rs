@@ -49,6 +49,7 @@ mod q290_word_pattern;
 mod q209_minimum_size_subarray_sum;
 mod q74_search_a_2d_matrix;
 mod q43_multiply_strings;
+mod q57_insert_interval;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
