@@ -3,7 +3,26 @@ use std::cmp::Ordering;
 pub struct Solution {}
 
 impl Solution {
+	// 两次二分分别搜起始和终止位置，然后判断是否需要合并。
 	pub fn insert(mut intervals: Vec<Vec<i32>>, target: Vec<i32>) -> Vec<Vec<i32>> {
+		let i = intervals
+			.binary_search_by_key(&target[0], |x| x[1])
+			.unwrap_or_else(|pos| pos);
+
+		let j = intervals
+			.binary_search_by_key(&(target[1] + 1), |x| x[0])
+			.unwrap_or_else(|pos| pos);
+
+		let ns = target[0].min(intervals.get(i).unwrap_or(&target)[0]);
+		let ne = target[1].max(intervals.get(j - 1).unwrap_or(&target)[1]);
+
+		return intervals.iter().take(i).cloned()
+			.chain(std::iter::once(vec![ns, ne]))
+			.chain(intervals.iter().skip(j).cloned()).collect()
+	}
+
+	// 一次二分 + 双向扩展，不知道为啥本地测试通过但提交失败。
+	pub fn insert_1(mut intervals: Vec<Vec<i32>>, target: Vec<i32>) -> Vec<Vec<i32>> {
 		let found = intervals.binary_search_by(|x| {
 			if target[0] > x[1] {
 				Ordering::Less
