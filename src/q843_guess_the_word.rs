@@ -1,25 +1,27 @@
+use std::cell::RefCell;
+
+// 题目给的 API 中 Master 是不可变引用，所以内部得搞 RefCell 来记录。
 pub struct Master {
-	pub value: String,
-	pub found: bool,
-	pub calls: usize,
+	pub secret: String,
+	pub record: RefCell<(bool, usize)>,
 }
 
 impl Master {
-	fn guess(&mut self, word: String) -> i32 {
-		if word == self.value {
-			self.found = true;
+	fn guess(&self, word: String) -> i32 {
+		if word == self.secret {
+			self.record.borrow_mut().0 = true;
 		} else {
-			self.calls += 1;
+			self.record.borrow_mut().1 += 1;
 		}
-		return Solution::similarity(&self.value, &word);
+		return Solution::similarity(&self.secret, &word);
 	}
 }
 
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 靠随机（取中）来避免卡数据，能不能过全看运气，好像不是最优解。
-	pub fn find_secret_word(mut words: Vec<String>, master: &mut Master) {
+	pub fn find_secret_word(mut words: Vec<String>, master: &Master) {
 		loop {
 			let word = words.swap_remove(words.len() / 2);
 			let matches = master.guess(word.clone());
@@ -41,16 +43,17 @@ mod tests {
 
 	fn do_test(words: Vec<&str>, secret: &str) {
 		let mut master = Master {
-			found: false,
-			calls: 0,
-			value: String::from(secret),
+			record: RefCell::new((false, 0)),
+			secret: String::from(secret),
 		};
 		let input = words
 			.into_iter()
 			.map(String::from)
 			.collect();
 		Solution::find_secret_word(input, &mut master);
-		assert!(master.found && master.calls < 10);
+
+		let record = master.record.take();
+		assert!(record.0 && record.1 < 10);
 	}
 
 	#[test]
