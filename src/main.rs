@@ -54,6 +54,7 @@ mod q843_guess_the_word;
 mod q64_minimum_path_sum;
 mod q63_unique_paths2;
 mod q221_maximal_square;
+mod q67_add_binary;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
