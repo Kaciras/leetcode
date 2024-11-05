@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 正向扫一遍，遇上坡 +1，再反过来一遍，最后每个位置取最大值。

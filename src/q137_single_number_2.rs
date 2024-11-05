@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 利用位最大为 1，三个的就是 3 可以用取余去除。

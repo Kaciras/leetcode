@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 这个傻屄题目给的描述里不包括嵌套的情况，但测试用例里有。
 impl Solution {

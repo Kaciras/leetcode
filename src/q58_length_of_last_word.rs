@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 原来 u8 可以直接写成 b + 字符，不需要去一个个查 ASCII 了。
 impl Solution {

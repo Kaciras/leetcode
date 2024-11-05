@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 不让用除法的话就分成前后缀积相乘。
 impl Solution {

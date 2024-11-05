@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	pub fn is_happy(mut n: i32) -> bool {

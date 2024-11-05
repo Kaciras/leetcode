@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 const T4: [&'static str; 10] = ["", "M", "MM", "MMM", "", "", "", "", "", ""];
 const T3: [&'static str; 10] = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];

@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 fn index_of<T: Fn(&u8) -> bool>(array: &[u8], start: usize, predicate: T) -> Option<usize> {
 	return array.iter().skip(start).position(predicate).map(|i| i + start);

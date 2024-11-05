@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 先看每个 t 中字符是否能换为 s 的，再反过来检查是否无重复使用。

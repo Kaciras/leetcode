@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 第一次写的时候竟然忘了三角形要两边和大于第三边。
 impl Solution {

@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 操蛋，看别人的写法整二维数组的竟然比我这一维的还快，看来是我给搞复杂了。
 impl Solution {

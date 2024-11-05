@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 不好看，如果模拟前探的话也许简单点。

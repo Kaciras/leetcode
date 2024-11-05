@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 两个指针分别从两侧向内扫描，每次递进更低的那个。

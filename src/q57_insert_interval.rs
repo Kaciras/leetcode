@@ -1,6 +1,6 @@
 use std::cmp::Ordering;
 
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 两次二分分别搜起始和终止位置，然后判断是否需要合并。

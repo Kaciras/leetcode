@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 按位一个个相乘吧，原先想多位（u64::MAX.log10）一组提升性能但太复杂了。
 impl Solution {

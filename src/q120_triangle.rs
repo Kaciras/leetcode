@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 最基础的 DP 题，没什么好说的，一次就搞定了。
 impl Solution {

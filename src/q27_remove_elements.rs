@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 没啥好说的，删除时直接把末尾的换过来即可。
 impl Solution {

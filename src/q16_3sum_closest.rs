@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 类似 3sum 中的两侧逼近法，这类问题几乎都可以用这种方案。
 impl Solution {

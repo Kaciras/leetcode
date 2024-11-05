@@ -1,6 +1,6 @@
 use std::ops::Index;
 
-pub struct Solution {}
+pub struct Solution;
 
 struct MatrixVec2D {
 	matrix: Vec<Vec<i32>>,

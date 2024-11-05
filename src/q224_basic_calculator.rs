@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 const L_BRACKET: u8 = 40;
 const R_BRACKET: u8 = 41;

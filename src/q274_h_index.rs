@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 跟计数排序类似的思想，统计每种被引用数出现的次数，然后从大到小找超过该引用数的位置。
 impl Solution {

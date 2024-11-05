@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 type Vector2D = (usize, usize);
 

@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 这题跟 21. Merge Two Sorted Lists 不是一回事吗，还更简单些。
 impl Solution {

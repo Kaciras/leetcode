@@ -1,7 +1,7 @@
 use std::collections::hash_map::Entry::{Occupied, Vacant};
 use std::collections::HashMap;
 
-pub struct Solution {}
+pub struct Solution;
 
 // 这题跟 205 是一样的，只不过把字符换成了字符串，导致两次的类型不同需要多写点。
 impl Solution {

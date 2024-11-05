@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 每列能接的水等于两侧最高值中较小的，减去该列的高度，最高值可以提前计算。

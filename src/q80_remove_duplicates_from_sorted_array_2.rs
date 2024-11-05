@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	// 最直观的方法，记下重复的数量，删除设为特殊值最后排序。

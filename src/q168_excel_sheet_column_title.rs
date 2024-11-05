@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 唯一要注意的是数字是从 1 开始的，每次要减一。
 impl Solution {

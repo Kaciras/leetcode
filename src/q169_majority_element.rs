@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 主要数的数量大于一半，故减去其它的数量一定为正。
 impl Solution {

@@ -1,6 +1,6 @@
 use crate::linked_list::ListNode;
 
-pub struct Solution {}
+pub struct Solution;
 
 impl Solution {
 	pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {

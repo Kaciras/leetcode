@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // Rust 正好自带该功能……说实话二分搜索写烂了，我也懒得搞这题。
 impl Solution {

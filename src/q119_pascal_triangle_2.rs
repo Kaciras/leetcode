@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 公式：C(n,k) = n!/k!(n−k)!，注意要用 long 型计算避免溢出。
 impl Solution {

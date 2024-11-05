@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 这题挺没意思的，不知道这个定理就没法写出最佳实现，只能穷举。
 impl Solution {

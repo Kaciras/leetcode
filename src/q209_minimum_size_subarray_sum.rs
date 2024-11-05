@@ -1,4 +1,4 @@
-pub struct Solution {}
+pub struct Solution;
 
 // 由于子数组连续，所以扫描范围也得是连续的区间，即滑动窗口。
 impl Solution {
