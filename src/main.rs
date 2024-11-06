@@ -20,7 +20,6 @@ mod q16_3sum_closest;
 mod q45_jump_game_2;
 mod q224_basic_calculator;
 mod q168_excel_sheet_column_title;
-mod q24_swap_nodes_in_pairs;
 mod q119_pascal_triangle_2;
 mod q120_triangle;
 mod q42_trapping_rain_water;
@@ -61,6 +60,7 @@ mod q71_simplify_path;
 mod q23_merge_k_sorted_lists;
 mod q41_first_missing_positive;
 mod q91_decode_ways;
+mod q167_TwoSum_2_InputArrayIsSorted;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
