@@ -58,7 +58,8 @@ mod q67_add_binary;
 mod q1492_the_kth_factor_of_n;
 mod q2405_optimal_partition_of_string;
 mod q71_simplify_path;
-mod q23_Merge_kSortedLists;
+mod q23_merge_k_sorted_lists;
+mod q41_first_missing_positive;
 
 /// 检查有无做重复的题，以及题目的序号是否重了，至于序号错误就不管了。
 fn check() {
