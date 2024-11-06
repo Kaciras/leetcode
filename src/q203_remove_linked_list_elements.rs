@@ -4,7 +4,7 @@ pub struct Solution;
 
 impl Solution {
 	pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
-		// 创建一个指针，只想表头
+		// 创建一个指针，指向表头
 		let mut p = &mut head;
 
 		// Rust 编译器太垃圾，交换两个 Some 的顺序或者用 while + if 都不行。
