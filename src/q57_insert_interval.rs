@@ -3,7 +3,9 @@ use std::cmp::Ordering;
 pub struct Solution;
 
 impl Solution {
-	// 两次二分分别搜起始和终止位置，然后判断是否需要合并。
+
+	/// 两次二分，搜起始和终止位置，然后判断是否需要合并，比起按区间为单位的搜索更简洁。
+	/// 由于重叠的判断是前一个的最后 >= 后一个的最前，所以比较函数是分别前后端点对比。
 	pub fn insert(mut intervals: Vec<Vec<i32>>, target: Vec<i32>) -> Vec<Vec<i32>> {
 		let i = intervals
 			.binary_search_by_key(&target[0], |x| x[1])
@@ -14,7 +16,14 @@ impl Solution {
 			.unwrap_or_else(|pos| pos);
 
 		let ns = target[0].min(intervals.get(i).unwrap_or(&target)[0]);
-		let ne = target[1].max(intervals.get(j - 1).unwrap_or(&target)[1]);
+
+		// Debug 模式下有溢出检测，当 j == 0 时会失败，需要处理下。
+		// Release 下会得到 usize::MAX，且题目中元素的数量最大为 1e4 所以没问题。
+		let ne = if j == 0 {
+			target[1]
+		} else {
+			target[1].max(intervals.get(j - 1).unwrap_or(&target)[1])
+		};
 
 		return intervals.iter().take(i).cloned()
 			.chain(std::iter::once(vec![ns, ne]))

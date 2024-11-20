@@ -11,11 +11,11 @@ impl Solution {
 		let chars = unsafe { s.as_bytes_mut() };
 		chars.reverse();
 
-		let mut i = 0;
-		let mut t = 0;
+		let mut src_index = 0;
+		let mut dest_index = 0;
 
-		while i < chars.len() {
-			let b = index_of(chars, i, |&b| b != b' ');
+		while src_index < chars.len() {
+			let b = index_of(chars, src_index, |&b| b != b' ');
 			if b.is_none() {
 				break; // 扫完了
 			}
@@ -25,15 +25,15 @@ impl Solution {
 			let mut word = &mut chars[b..e];
 			word.reverse();
 
-			if t != 0 {
-				chars[t] = b' ';
-				t += 1;
+			if dest_index != 0 {
+				chars[dest_index] = b' ';
+				dest_index += 1;
 			}
-			chars.copy_within(b..e, t);
-			(i, t) = (e, e - b);
+			chars.copy_within(b..e, dest_index);
+			(src_index, dest_index) = (e, dest_index + e - b);
 		}
 
-		s.truncate(t);
+		s.truncate(dest_index);
 		return s;
 	}
 }
